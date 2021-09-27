@@ -1,0 +1,51 @@
+nav {
+    vertical-align: bottom;
+    text-align: right;
+    float: right;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+ body {
+     background-color: #FDF7D7;
+ } 
+
+ .logo {
+     display: block;
+ }
+
+ h1 {
+     display: inline;
+     font-family: 'FuenteLogo';
+ }
+
+ @font-face {
+    font-family: 'FuenteLogo'; /*a name to be used later*/
+    src: url('Recursos/Imagenes/ballpark.ttf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'FuenteEspecial'; /*a name to be used later*/
+    src: url('Recursos/Imagenes/dayrom.ttf'); /*URL to font*/
+}
+
+.imagenPuente{
+    
+}
+
+article {
+    margin-right: 20%;
+    margin-top: 2em;
+}
+
+.tituloarticulo {
+    display: block;
+}
+
+.fuenteEspecial {
+    font-family: 'FuenteEspecial';
+}
