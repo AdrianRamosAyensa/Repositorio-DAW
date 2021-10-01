@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicios de prueba</title>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+
+            var nota = parseInt( prompt("Introduce una nota:") );
+
+            var numerico = Number.isInteger( numero );
+
+            if ( numerico ) {
+                if (nota < 5) {
+                    alert("suspenso");
+                } else if (nota >=5 && nota < 7){
+                    alert("aprobado");
+                } else if (nota >=7 && nota < 9){
+                    alert("notable");
+                } else if (nota >=9 && nota <= 10){
+                    alert("sobresaliente");
+                } else {
+                    alert("Nota no valida");
+                }
+            } else {
+                alert("Nota no valida");
+            }
+
+        </script>
+
+    </body>
+
+</html>

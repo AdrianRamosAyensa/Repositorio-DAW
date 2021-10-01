@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicios de prueba</title>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+
+            var edad = parseInt( prompt("Introduce una edad:") );
+
+            if ( edad >= 0 && edad <= 12 ) {
+                alert("0-12: Niño");
+            } else if ( edad >= 13 && edad <= 26 ) {
+                alert("13-26: Joven");
+            } else if ( edad >= 27 && edad <= 60) {
+                alert("27-60: Adulto");
+            } else if ( edad > 60 ) {
+                alert("> 60: Jubilado");
+            } else {
+                alert("Edad Inválida, como tu");
+            }
+
+        </script>
+
+    </body>
+
+</html>
