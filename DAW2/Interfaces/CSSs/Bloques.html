@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Posicionamiento</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <style>
+
+            body{
+                margin: 0;
+            }
+
+            div#relativa {
+                position: relative;
+                background-color: pink;
+                width: 10em;
+                height: 2em;
+                left: 4em;
+            }
+
+            div#fija {
+                position: fixed;
+                background: yellow;
+                width: 15em;
+                height: 8em;
+                left: 20em;
+                top: 10em;
+            }
+
+            div#absoluta{
+                position: absolute;
+                background: lightblue;
+                width: 8em;
+                height: 3em;
+                left: 1em;
+                top: 2em;
+            }
+
+            div#flotante {
+                float: right;
+                background: lightgreen;
+                width: 15em;
+                height: 3em;
+            }
+
+        </style>
+
+        <div id="relativa">Relativa</div>
+        <div id="fija">
+            Fija
+        
+            <div id="absoluta">Absoluta</div>
+        </div>
+
+        <div id="flotante">Flotante</div>
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ejercicios de funciones</title>
+        <meta charset="UTF-8">
+        <script>
+            function escribirBienvenida(){
+                document.write('<h1>Hola holita venicitos :D </h1>');
+            }
+            function sumar(numero1, numero2){
+                var suma = numero1 + numero2;
+                document.write('<p>' + numero1 + ' + ' + numero2 + ' = ' + suma + '</p>');
+            }
+            function restar(numero1, numero2){
+                var resta = numero1 - numero2;
+                return resta;
+            }
+            function producto(numero1, numero2){
+                var multiplicacion = numero1 * numero2;
+                return multiplicacion;
+            }
+        </script>
+    </head>
+    <body>
+
+        <script type="text/javascript">
+        
+        for (let index = 0; index < 3; index++) {
+
+            escribirBienvenida();
+        }
+
+        var preNumero = parseFloat( prompt("Dime un numero") );
+        var numero1 = !isNaN(preNumero) ? preNumero : 0 ;
+        
+        preNumero = parseFloat( prompt("Dime otro numero") );
+        var numero2 = !isNaN(preNumero) ? preNumero : 0 ;
+        
+        sumar( numero1, numero2 );
+
+        var resta = restar( numero1, numero2 );
+        alert(numero1 + ' - ' + numero2 + ' = ' + resta);
+        
+        var multiplicacion = producto( numero1, numero2 );
+        alert(numero1 + ' * ' + numero2 + ' = ' + multiplicacion);
+        
+        </script>
+
+    </body>
+</html>

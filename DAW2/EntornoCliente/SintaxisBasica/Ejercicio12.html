@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<body>
+
+    <script type="text/javascript">
+    
+        var nombre = prompt("¿Cómo se llama el primer presidente de la democracia española?");
+        var apellido = prompt("¿Cual es su apellido?");
+
+        nombre = toLowerCase( nombre );
+        apellido = toLowerCase( apellido );
+
+        while ( nombre != 'adolfo' && apellido != 'suarez' ) {
+
+            alert("ERROR. Intentelo de nuevo.");
+            nombre = prompt("¿Cómo se llama el primer presidente de la democracia española?");
+            apellido = prompt("¿Cual es su apellido?");
+
+            while ( nombre != '' && apellido == '' ){
+                alert("Te falta el apellido.");
+                apellido = prompt("¿Cual es su apellido?");
+
+            }
+
+            while ( nombre == '' && apellido != '' ){
+                alert("Te falta el nombre.");
+                nombre = prompt("¿Cómo se llama el primer presidente de la democracia española?");
+            }
+
+            nombre = toLowerCase( nombre );
+            apellido = toLowerCase( apellido );
+
+        }
+
+        alert("ALELUYAAAAA");
+
+
+    
+    </script>
+
+</body>
+
+</html>
