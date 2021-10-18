@@ -21,13 +21,19 @@ class App
 
   public function fibonacci()
   {
+      $numero2 = 0;
+    $arrFibonacci = [];
 
-    $numero1 = 1;
-    $numero2 = 0;
+    array_push( $arrFibonacci, 1 );
 
-    while ($numero2 < 1000000){ 
-      $numero2 += $numero1;
-      $numero2 = $numero1;
+    while ($numero2 < 1000000){
+        $numero2 += $arrFibonacci[ count( $arrFibonacci ) - 1 ];
+        array_push( $arrFibonacci, $numero2 );
+    }
+
+    foreach ( $arrFibonacci as $numero ) {
+        echo $numero;
+        echo '<br>';
     }
     
   }
