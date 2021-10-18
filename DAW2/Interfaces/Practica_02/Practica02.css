@@ -1,0 +1,38 @@
+* {
+    border-top: 1px solid red;
+}
+
+.inline {
+    display: inline-block;
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+dt {
+    font-weight: bold;
+    width: 100px;
+    text-align: right;
+}
+
+dl {
+    line-height: 1.5;
+}
+
+section {
+    width: 60%;
+}
+
+aside {
+    float: right;
+    width: 35%;
+    min-width: 30%;
+    margin-top: 5%;
+}
+
+footer {
+    display: block;
+    margin: 0 auto;
+}
