@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio Regex</title>
+    </head>
+    <body>
+
+        <script type="text/javascript">
+        
+            var cadena = "abc1Hola a abc2bbtodos";
+            var ex1 = /abc[0-9]/g; // g = busqueda en toda la cadena
+
+            alert(ex1.exec(cadena));
+            alert(ex1.test(cadena));
+
+
+        </script>
+
+    </body>
+</html>

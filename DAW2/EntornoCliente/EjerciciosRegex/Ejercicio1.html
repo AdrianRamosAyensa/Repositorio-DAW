@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 1 Regex</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+            var telefono = "654785964";
+            var regExTelefono = /[0-9]{9}/;
+
+            alert( regExTelefono.test(telefono) );
+
+            var fecha = "21/10/2021";
+            var regExFecha = /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/;
+
+            alert( regExFecha.test(fecha) );
+
+            var codPostal = "50401";
+            var regExPostal = /[0-9]{5}/;
+
+            alert( regExPostal.test(codPostal) );
+
+            var email = "ej5emplo@em7ail.";
+            var regExEmail = /[0-9A-z]+@[0-9A-z]+.[a-z]+/;
+
+            alert( regExEmail.test(email) );
+        
+        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+header {
+    width: 590px;
+    display: inline;
+    float: left;
+}
+
+nav {
+    width: 590px;
+    display: inline;
+    text-align: right;
+}
+
+nav li a{
+    color: rgb(85, 84, 84);
+    text-decoration: none;
+}
+
+#navList li {
+    font-size: 1.3em;
+    background-color: rgb(230, 230, 230);
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+nav li {
+    list-style: none;
+    display: inline;
+    
+}
+
+#tabs {
+    margin-left: -20px;
+}
+
+#tabs li {
+    list-style: none;
+    display: inline;
+    font-size: 1.3em;
+    background-color: rgb(230, 230, 230);
+    padding-left: 4px;
+    padding-right: 4px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#lang {
+    text-align: right;
+}
+
+#lang li {
+    list-style: none;
+    display: inline;
+    font-size: 1.3em;
+    background-color: rgb(230, 230, 230);
+    padding-left: 4px;
+    padding-right: 4px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
