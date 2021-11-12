@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Objetos</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+        function Persona(nombre, apellidos){
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+        }
+
+        var persona1 = new Persona( 'Pepe' , 'Viyuela' );
+        persona1.ciudad = 'Villaviciosa de abajo';
+
+        alert("Hola, me llamo " + persona1.nombre + " de apellidos " + persona1.apellidos + ". Mi ciudad es: " + persona1.ciudad );
+
+</script>
+        
+    </body>
+</html>

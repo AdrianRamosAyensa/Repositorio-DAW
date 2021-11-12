@@ -1,0 +1,17 @@
+version: "3"
+services:
+  RepositorioClase:
+    image: php:7.4-apache
+    container_name: RepositorioClase
+    hostname: RepositorioClase
+    ports:
+      - "80:80"
+    volumes:
+      - /home/alumno/Repositorio C:\Users\Ramos\Source\Repositorio-DAW:/var/www/html
+    environment:
+      - VIRTUAL_HOST=repositorioclase.com,www.repositorioclase.com
+    restart: always
+    networks:
+      - frontend
+networks:
+  frontend:

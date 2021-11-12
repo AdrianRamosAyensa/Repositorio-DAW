@@ -3,13 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <title>Ejercicio de eventos</title>
+        <script>
+
+            function cambioParrafo3() {
+                var p3 = document.getElementById('parrafo3');
+
+                p3.style.color = 'green';
+                p3.textContent = 'Se ha cambiado el texto del párrafo';
+                p3.style.backgroundColor = 'blue';
+                p3.style.fontSize = '2rem';
+            }
+
+
+        </script>
     </head>
     <body>
-        <p onclick="alert('Me has pulsado');">Púlsame</p>
-        <p onmouseover="this.style.color='red';"
+        <p id="parrafo1" onclick="alert('Me has pulsado');">Púlsame</p>
+        <p id="parrafo2" onmouseover="this.style.color='red';"
             onmouseout="this.style.color='black';">Pasa sobre mí</p>
+
+        <p id="parrafo3">Pulsa aquí y cambiaré el color y el texto</p>    
+
         <script type="text/javascript">
         
+            document.getElementById('parrafo3').onclick = cambioParrafo3;
             
         
         </script>

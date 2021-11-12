@@ -1,3 +1,15 @@
+* {
+    /*border: 1px solid red; */
+}
+
+hr {
+    margin: 0;
+}
+
+body {
+    width: 1190px;
+}
+
 header {
     width: 590px;
     display: inline;
@@ -10,7 +22,7 @@ nav {
     text-align: right;
 }
 
-nav li a{
+nav li a {
     color: rgb(85, 84, 84);
     text-decoration: none;
 }
@@ -25,11 +37,20 @@ nav li a{
 nav li {
     list-style: none;
     display: inline;
-    
 }
 
 #tabs {
     margin-left: -20px;
+    display: inline;
+    margin-bottom: 0;
+}
+
+#lenguajes {
+    display: inline;
+}
+
+#tabs_lang {
+    display: inline;
 }
 
 #tabs li {
@@ -44,7 +65,10 @@ nav li {
 }
 
 #lang {
+    display: inline;
     text-align: right;
+    float: right;
+    margin-bottom: 0;
 }
 
 #lang li {
@@ -56,4 +80,47 @@ nav li {
     padding-right: 4px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+#program {
+    /* margin-right: 300px;*/
+    width: 890px;
+}
+
+#program_text {
+    display: inline;
+    width: 690px;
+    float: left;
+    margin: 0;
+}
+
+#program_text p {
+    /*width: 690px;*/
+    display: inline;
+}
+
+#img_program {
+    float: right;
+    width: 190px;
+    margin-right: 10px;
+    margin-left: 0px;
+    display: inline;
+}
+
+#what_about {
+    display: inline;
+    width: 490px;
+    margin-right: 10px;
+    float: left;
+    margin-top: 50px;
+}
+
+#schedule {
+    display: inline;
+    width: 390px;
+    float: left;
+}
+
+.postit {
+    width: 290px;
 }

@@ -1,0 +1,105 @@
+.menu {
+    width: 200px;
+    display: inline;
+}
+
+.menu1 {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    margin-top: 20px;
+    display: inline;
+}
+
+.menu1:hover {
+    background-color: skyblue;
+}
+
+.menu2 {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    margin-top: 20px;
+    display: inline;
+}
+
+.menu2:hover {
+    background-color: skyblue;
+}
+
+.menu3 {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    margin-top: 20px;
+    display: inline;
+}
+
+.menu3:hover {
+    background-color: skyblue;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-1 {
+    display: none;
+    background-color: skyblue;
+    width: 200px;
+}
+
+.dropdown-1 a {
+    color: blue;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu1:hover+.dropdown-1 {
+    display: block;
+    position: absolute;
+}
+
+.dropdown-2 {
+    display: none;
+    background-color: skyblue;
+    min-width: 200px;
+}
+
+.dropdown-2 a {
+    color: blue;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu2:hover+.dropdown-2 {
+    position: absolute;
+    display: block;
+}
+
+.dropdown-3 {
+    display: none;
+    background-color: skyblue;
+    min-width: 200px;
+}
+
+.dropdown-3 a {
+    color: blue;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu3:hover+.dropdown-3 {
+    display: block;
+    position: absolute;
+}

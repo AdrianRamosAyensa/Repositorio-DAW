@@ -1,0 +1,55 @@
+/*#paises li {
+    background-color: blue;
+    color: white;
+    margin: 5px;
+    width: 150px;
+}*/
+
+* {
+    border: 1px solid red;
+}
+
+#paises li {
+    position: relative;
+}
+
+li {
+    list-style-type: none;
+    background-color: blue;
+    color: white;
+    margin: 5px;
+    width: 150px;
+}
+
+#ciudades {
+    display: none;
+    margin-left: 120px;
+    position: absolute;
+    margin-top: -20px;
+}
+
+#spain:hover+#ciudades {
+    display: inline-block;
+}
+
+#villes {
+    display: none;
+    margin-left: 120px;
+    position: absolute;
+    margin-top: -20px
+}
+
+#france:hover+#villes {
+    display: inline-block;
+}
+
+#cities {
+    display: none;
+    margin-left: 120px;
+    position: absolute;
+    margin-top: -20px
+}
+
+#england:hover+#cities {
+    display: inline-block;
+}
