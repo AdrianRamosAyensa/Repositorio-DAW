@@ -18,12 +18,17 @@
             this.direccion = "C/La inventada, Nº77";
             this.ciudad = "Invent City";
 
-            function darBienvenida() {
+            this.darBienvenida = function() {
                 alert("Hola " + this.nombre + ", bienvenido a la academia " + this.nombreAcademia);
             }
+
+            this.importeGastado = function() {
+                alert(this.nombre + " Se ha gastado " + this.importe);
+            }
+
         }
 
-        function bienvenida() {
+        function registro() {
             var nomAlumno = prompt("Indica el nombre del alumno: ");
             var edadAlumno = prompt("Indica la edad del alumno: ");
             var interesesAlumno = new Array();
@@ -31,14 +36,24 @@
                 var interes = prompt("Indica un interes del alumno: ");
                 interesesAlumno[i] = interes;
             }
-
             var materiaAlumno = prompt("Indica la materia en la que está matriculado el alumno: ");
-            var importeAlumno = prompt("Indica cuánto importa el alumno: ");
+            var importeAlumno = parseInt(prompt("Indica cuánto importa el alumno: "));
 
-            var alumno = new Alumno(nomAlumno, edadAlumno, interesesAlumno, materiaAlumno, importeAlumno);
-            alumno.prototype = new Academia();
+            Alumno.prototype = new Academia();
+            var alumno1 = new Alumno(nomAlumno, edadAlumno, interesesAlumno, materiaAlumno, importeAlumno);
 
-            alumno.darBienvenida();
+            alumno1.darBienvenida();
+            alumno1.importeGastado();
+        }
+
+        function nuevoImporte() {
+            var nomAlumno = prompt("Indica el nombre del alumno: ");
+            var importe = parseInt(prompt("Introduce el importe gastado por el alumno: "));
+
+            Alumno.prototype = new Academia();
+            var alumno1 = new Alumno(nomAlumno, "", "", "", importe);
+            alumno1.importeGastado();
+
         }
     </script>
 </head>
@@ -51,7 +66,8 @@
         // Boton que al pulsar pida los datos del alumno y muestre la bienvenida
     </script>
 
-    <input type="button" value="Bienvenida" onclick="bienvenida()" />
+    <input type="button" value="Registro" onclick="registro()" />
+    <input type="button" value="Gasto" onclick="nuevoImporte()" />
 
 </body>
 

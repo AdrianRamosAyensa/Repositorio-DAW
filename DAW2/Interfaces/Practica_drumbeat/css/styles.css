@@ -1,14 +1,70 @@
-* {
-    /*border: 1px solid red; */
+/*Inclusion de la fuente ptsans*/
+
+@font-face {
+    font-family: 'PTSans';
+    src: url('../fonts/PTSans-Regular.ttf');
+}
+
+
+/* Omisión del subrayado de los enlaces */
+
+a {
+    text-decoration: none;
+}
+
+
+/* Cambio de color y fuentes de algunos textos */
+
+h1 {
+    color: #0A6F7D;
+    font-family: PTSans;
+}
+
+#program h1 {
+    color: #43B4B7;
+}
+
+h2 {
+    color: #0A6F7D;
+    font-family: sans-serif;
+}
+
+.link1 {
+    color: #4B9187;
+    font-style: italic;
+}
+
+.postit h3 {
+    color: #263C3C;
+}
+
+.postit a {
+    color: #3E656C;
+}
+
+#partnership a {
+    color: #3E656C;
 }
 
 hr {
     margin: 0;
+    margin-top: 5px;
 }
+
+#loginList {
+    font-family: sans-serif;
+}
+
+
+/* el body mide 1190 píxeles */
 
 body {
     width: 1190px;
+    margin: auto;
 }
+
+
+/* Tamaño y posición del header (Solo es el logo) */
 
 header {
     width: 590px;
@@ -16,10 +72,18 @@ header {
     float: left;
 }
 
+
+/* Tamaño y posición de la barra de navegacion (la de about, projects...) */
+
 nav {
     width: 590px;
     display: inline;
     text-align: right;
+}
+
+nav li {
+    padding: 3px;
+    border-radius: 10px;
 }
 
 nav li a {
@@ -32,6 +96,7 @@ nav li a {
     background-color: rgb(230, 230, 230);
     padding-left: 2px;
     padding-right: 2px;
+    background-color: lightgray;
 }
 
 nav li {
@@ -39,17 +104,25 @@ nav li {
     display: inline;
 }
 
+
+/* Tamaño y posición de la segunda barra de navegacion (la de Festival, Program...) */
+
 #tabs {
     margin-left: -20px;
     display: inline;
     margin-bottom: 0;
 }
 
-#lenguajes {
+#tabs_nav {
     display: inline;
+    font-family: PTSans;
 }
 
-#tabs_lang {
+.tabnav {
+    padding: 5px;
+}
+
+#lenguajes {
     display: inline;
 }
 
@@ -57,6 +130,7 @@ nav li {
     list-style: none;
     display: inline;
     font-size: 1.3em;
+    color: gray;
     background-color: rgb(230, 230, 230);
     padding-left: 4px;
     padding-right: 4px;
@@ -64,11 +138,16 @@ nav li {
     border-top-right-radius: 10px;
 }
 
+
+/* Estilos de la selección de idioma */
+
 #lang {
     display: inline;
     text-align: right;
     float: right;
     margin-bottom: 0;
+    padding: 0px;
+    font-family: PTSans;
 }
 
 #lang li {
@@ -78,12 +157,28 @@ nav li {
     background-color: rgb(230, 230, 230);
     padding-left: 4px;
     padding-right: 4px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    color: rgb(117, 117, 117);
 }
 
+.langtab {
+    padding: 5px;
+}
+
+#lang_start {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#lang_end {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+/* Tamaño, posición y estilos de la caja de program */
+
 #program {
-    /* margin-right: 300px;*/
+    float: left;
     width: 890px;
 }
 
@@ -92,10 +187,10 @@ nav li {
     width: 690px;
     float: left;
     margin: 0;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #program_text p {
-    /*width: 690px;*/
     display: inline;
 }
 
@@ -107,20 +202,358 @@ nav li {
     display: inline;
 }
 
+
+/* Estilos y posición de la caja de register */
+
+#register {
+    float: right;
+    width: 300px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    background-color: #9ACEFE;
+    border-radius: 10px;
+    color: darkslategray;
+    text-align: center;
+}
+
+#register p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#register strong {
+    color: darkblue;
+}
+
+
+/* Se ha optado por un botón en vez de un div porque era mas sencillo dejar el estilo adecuado */
+
+#botonRegister {
+    width: 250px;
+    height: 60px;
+    background-color: #8DCE68;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+/* Estilos de las 2 cajas debajo de la de program, la de la izquierda algo mas ancha */
+
 #what_about {
     display: inline;
     width: 490px;
     margin-right: 10px;
     float: left;
-    margin-top: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #C0B1B1;
+}
+
+#what_about h2 {
+    font-family: sans-serif;
+}
+
+#schedule h2 {
+    font-family: sans-serif;
 }
 
 #schedule {
     display: inline;
     width: 390px;
     float: left;
+    font-family: 'Times New Roman', Times, serif;
+    color: #C0B1B1;
 }
 
+
+/* Estilos de la caja con la lista con imágenes posicionada a la derecha
+se opta por poner las imágenes como fondo de los items y hacer padding del texto para evitar la superposición en vez de usar una lista de definiciones por su simplicidad */
+
+#asideLista {
+    float: right;
+    width: 300px;
+    background-color: #EDF1F0;
+    border-radius: 10px;
+    color: darkslategray;
+    margin-top: -70px;
+    font-family: PTSans;
+}
+
+#asideLista ul {
+    list-style-type: none;
+    list-style-position: outside;
+    margin-left: -30px;
+}
+
+#asideLista ul li {
+    padding-left: 50px;
+    height: 60px;
+}
+
+
+/* Imagenes para la lista */
+
+#p2pu {
+    background: url("../img/benefit_p2pu.png") no-repeat;
+}
+
+#creds {
+    background: url("../img/benefit_creds.png") no-repeat;
+}
+
+#hackbus {
+    background: url("../img/benefit_hackbus.png") no-repeat;
+}
+
+#teaching {
+    background: url("../img/benefit_teaching.png") no-repeat;
+}
+
+#hack {
+    background: url("../img/benefit_hack.png") no-repeat;
+}
+
+#wikipedia {
+    background: url("../img/benefit_wikipedia.png") no-repeat;
+}
+
+
+/* Tamaño y posicion de la caja grande con los postits */
+
+#festivalSpaces {
+    float: left;
+    width: 890px;
+    margin-left: 0px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#festivalSpaces h2 {
+    margin-top: 0px;
+    font-family: sans-serif;
+}
+
+
+/* Estilos del contenedor de los postits
+Se usa flex para ordenar los postits correctamente */
+
+#contenedorPostits {
+    margin: 0;
+    flex: wrap;
+    flex-flow: row wrap;
+}
+
+.postit h3 {
+    margin-top: 5px;
+    font-family: PTSans;
+}
+
+.postit p {
+    display: inline;
+}
+
+
+/* clase común para todos los postits */
+
 .postit {
-    width: 290px;
+    width: 270px;
+    min-height: 150px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    display: inline-flex;
+}
+
+
+/* Cambio de colores de los postits */
+
+.verde {
+    background-color: #DEEFAB;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.azul {
+    background-color: #9BDAE9;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.rosa {
+    background-color: #FFDBD5;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.amarillo {
+    background-color: #FEFEC2;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#partnership {
+    padding: 0px;
+    width: 600px;
+}
+
+#partnership>p {
+    font-family: 'Times New Roman';
+    margin: 0px;
+    margin-top: 50px;
+}
+
+#partnership>h2 {
+    font-family: sans-serif;
+    color: turquoise;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+
+/* Tamaño, posicion y estilos de la caja con la lista de checks */
+
+#who {
+    background-color: #FEFEC2;
+    width: 280px;
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: 'Times New Roman';
+}
+
+#who h3 {
+    font-family: Georgia;
+}
+
+
+/* Se usa la imagen de check como bullet de la lista */
+
+#whoList {
+    list-style-image: url("../img/check.png");
+    font-family: PTSans;
+}
+
+
+/* Estilos y posición de las redes sociales identi.ca y twitter */
+
+#rrss {
+    width: 280px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-top: 30px;
+    float: left;
+    font-family: 'Times New Roman';
+}
+
+
+/* Estilos de la caja de identi.ca */
+
+#identica {
+    width: 200px;
+    border-radius: 10px;
+    background-color: #97C3D4;
+    height: 40px;
+}
+
+#identica img {
+    margin-left: 10px;
+    float: left;
+}
+
+#identica a {
+    width: 150px;
+    color: white;
+    padding-top: 10px;
+    float: right;
+}
+
+
+/* Estilos de la caja de twitter */
+
+#twitter {
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #33C9FF;
+    height: 40px;
+}
+
+#twitter img {
+    margin-left: 10px;
+    float: left;
+}
+
+#twitter a {
+    float: right;
+    color: white;
+    padding-top: 10px;
+    margin-right: 60px;
+    width: 80px;
+}
+
+
+/* Estilos y posicion del footer */
+
+footer {
+    margin-top: 20px;
+    font-family: 'Times New Roman';
+    height: 120px;
+    background-color: gray;
+    float: left;
+    margin-bottom: 10px;
+    color: white;
+    width: 100%;
+}
+
+
+/* Listas del propio footer */
+
+#blog {
+    margin-left: 30px;
+    margin-top: 0px;
+    vertical-align: top;
+    width: 140px;
+    list-style-type: none;
+    display: inline-block;
+}
+
+#redes {
+    width: 100px;
+    margin-top: 0px;
+    vertical-align: top;
+    list-style-type: none;
+    display: inline-block;
+}
+
+#bug {
+    width: 120px;
+    margin-top: 0px;
+    vertical-align: top;
+    list-style-type: none;
+    display: inline-block;
+}
+
+#mozilla {
+    width: 140px;
+    margin-top: 0px;
+    vertical-align: top;
+    list-style-type: none;
+    display: inline-block;
+}
+
+#license {
+    width: 390px;
+    margin-top: 0px;
+    vertical-align: top;
+    list-style-type: none;
+    display: inline-block;
+    text-align: right;
+}
+
+#copyright {
+    color: darkslategray;
 }
