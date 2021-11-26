@@ -1,0 +1,18 @@
+{
+    "name": "ramos/mvc_06",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "App\\Controllers\\": "app/controllers/",
+            "App\\Models\\": "app/models/",
+            "Ramos\\Mvc06\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Adrian Ramos",
+        "email": "30373697+AdrianRamosAyensa@users.noreply.github.com"
+    }],
+    "require": {
+        "dompdf/dompdf": "^1.1"
+    }
+}

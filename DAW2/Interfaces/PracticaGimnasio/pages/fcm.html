@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Frecuencia cardiaca maxima</title>
+    <script type="text/javascript" src="js/fcm.js"></script>
+</head>
+
+<body>
+
+    <label for="edad">Edad:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="edad" />
+    </br>
+    </br>
+    <label for="sexo">Sexo:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <select id="sexo">
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
+            <option value="Otro">Otro</option>
+        </select>
+    </br>
+    </br>
+
+    <label for="resultado">FCM:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <textarea id="resultado" disabled rows="1" style="height:25px; width:60px;"></textarea>
+
+    </br>
+    </br>
+
+    <button id="btnCalcFcm" type="button" onclick="fcmCalc();">Calcular</button>
+
+    </br>
+    </br>
+
+    <ul>
+        <li style="color:green;">Zona de recuperación (60%-70%) <pre id="recuperacion" style="display:inline;"></pre></li>
+        <li style="color:darkturquoise;">Zona aeróbica (70%-80%) <pre id="aerobica" style="display:inline;"></pre></li>
+        <li style="color:orange;">Zona anaeróbica (80%-90%) <pre id="anaerobica" style="display:inline;"></pre></li>
+        <li style="color:red;">Línea roja (90%-100%) <pre id="roja" style="display:inline;"></pre></li>
+    </ul>
+</body>
+<footer>
+</footer>
+
+</html>
