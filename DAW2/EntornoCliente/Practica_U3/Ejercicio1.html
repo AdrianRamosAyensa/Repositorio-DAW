@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+    <script type="text/javascript">
+        function Colegio(nombre, nAulas, nAlumnos) {
+            this.nombre = nombre;
+            this.nAulas = nAulas;
+            this.nAlumnos = nAlumnos;
+
+            this.cambioAlumnos(nAlumnos) {
+                this.nAlumnos = nAlumnos;
+            }
+        }
+
+        function Alumno(DNI, nombre, notaMedia) {
+            this.DNI = DNI;
+            this.nombre = nombre;
+            this.notaMedia = notaMedia;
+
+            this.cambiarNota(nota) {
+                this.notaMedia = nota;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="nombreColegio">Nombre del colegio:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="nombreColegio" />
+        <br>
+        <label for="numeroAulas">Número de aulas:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" id="numeroAulas" />
+        <br>
+        <label for="numeroAlumnos">Número de alumnos:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" id="numeroAlumnos" />
+        <br>
+        <input value="Añadir colegio" type="button" id="btnColegio" onclick="crearColegio()" />
+    </form>
+
+    <h1>Tabla Colegios</h1>
+    <table id="fisioterapia" border="1">
+        <th></th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miercoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+    </table>
+
+    <form>
+        <label for="dniAlumno">DNI del alumno:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="dniAlumno" />
+        <br>
+        <label for="nombreAlumno">Nombre del alumno:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="nombreAlumno" />
+        <br>
+        <label for="notaAlumno">Nota media del alumno:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" id="notaAlumno" />
+        <br>
+        <input type="button" id="btnAlumno" onclick="crearAlumno()" />
+    </form>
+
+    <br>
+    <br>
+
+
+</body>
+
+</html>

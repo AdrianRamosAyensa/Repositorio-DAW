@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function calcular() {
+
+            // Limpio el textarea en el que se muestra el resultado del imc
+            document.getElementById("resultado").textContent = "";
+
+            // Reinicia el color de toda la lista a negro
+            var lista = document.getElementsByTagName("li");
+            for (var i = 0; i < lista.length - 1; i++) {
+                lista[i].style.color = "black";
+            }
+
+            // Recojo el valor de altura
+            var preAltura = parseInt(document.getElementById("altura").value);
+
+            // Si el valor de la altura no es válido se pinta de rojo el campo de texto
+            var altura = !isNaN(preAltura) ? preAltura : 0;
+
+            if (isNaN(altura) || altura == 0) {
+                document.getElementById("altura").style.backgroundColor = "Indianred";
+                return;
+            } else {
+                document.getElementById("altura").style.backgroundColor = "";
+            }
+
+            // Recojo el valor de altura
+            var prePeso = parseInt(document.getElementById("peso").value);
+
+            // Si el valor de la altura no es válido se pinta de rojo el campo de texto
+            var peso = !isNaN(prePeso) ? prePeso : 0;
+
+            if (isNaN(peso) || peso == 0) {
+                document.getElementById("peso").style.backgroundColor = "Indianred";
+                return;
+            } else {
+                document.getElementById("peso").style.backgroundColor = "";
+            }
+
+            // Cálculo del IMC
+            var imc = peso / (Math.pow(altura / 100, 2));
+
+            // Pinto el item de la lista correspondiente al valor del imc calculado
+            switch (true) {
+                case imc < 16:
+                    document.getElementById("infrapeso1").style.color = "red";
+                    break;
+
+                case imc >= 16 && imc <= 16.99:
+                    document.getElementById("infrapeso2").style.color = "red";
+                    break;
+
+                case imc >= 17 && imc <= 18.49:
+                    document.getElementById("infrapeso3").style.color = "yellow";
+                    break;
+
+                case imc >= 18.5 && imc <= 24.99:
+                    document.getElementById("normal").style.color = "green";
+                    break;
+
+                case imc >= 25 && imc <= 29.99:
+                    document.getElementById("sobrepeso").style.color = "yellow";
+                    break;
+
+                case imc >= 30 && imc <= 34.99:
+                    document.getElementById("obeso1").style.color = "red";
+                    break;
+
+                case imc >= 35 && imc <= 40:
+                    document.getElementById("obeso2").style.color = "red";
+                    break;
+
+                case imc > 40:
+                    document.getElementById("obeso3").style.color = "red";
+                    break;
+
+            }
+
+            // Muestro el IMC en el textarea
+            imc = Math.round(imc * 100) / 100;
+            var result = "imc = " + imc.toString();
+            document.getElementById("resultado").innerHTML = result;
+
+        }
+    </script>
+
+    <label for="altura">Altura:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="altura" />
+    <br/>
+
+    <label for="peso">Peso:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="peso" />
+    <br/>
+
+    <input type="button" onclick="calcular()" value="calcular" />
+    <br/>
+    <br/>
+
+    <textarea id="resultado" disabled rows="1"></textarea>
+    <br/>
+    <br/>
+
+    <ul id="lista_imc">
+        <li id="infrapeso1">&lt;16.00: Infrapeso (delgadez severa)</li>
+        <li id="infrapeso2">16.00 – 16.99: Infrapeso (delgadez moderada)</li>
+        <li id="infrapeso3">17.00 - 18.49: Infrapeso (delgadez aceptable)</li>
+        <li id="normal">18.50 - 24.99: Peso normal</li>
+        <li id="sobrepeso">25.00 - 29.99: Sobrepeso</li>
+        <li id="obeso1">30.00 - 34.99: Obeso (Tipo I)</li>
+        <li id="obeso2">35.00 - 40.00: Obeso (Tipo II)</li>
+        <li id="obeso3">&gt;40.00: Obeso (Tipo III)</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clases 1</title>
+    <script>
+        class TarjetaFelicitacion {
+            constructor(mensaje) {
+                this.mensajeTarjeta = mensaje;
+            }
+
+            // metodo de la clase
+            personalizar(nombre) {
+                return (nombre + ", tengo este mensaje para ti: " + this.mensajeTarjeta);
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="Felicitar" onclick="parrafear()">
+
+    <p id="felicitacion"></p>
+
+    <script type="text/javascript">
+        var tarjeta1 = new TarjetaFelicitacion("Felicidades!!");
+        alert(tarjeta1.mensajeTarjeta);
+
+        alert(tarjeta1.personalizar("Juan"));
+
+        // crear objeto con mensaje "feliz cumple" y que lo grabe en el contenido de un parrafo al hacer clic en un boton
+
+        function parrafear() {
+
+            var tarjeta2 = new TarjetaFelicitacion("Feliz cumple!!");
+            var parrafo = document.getElementById("felicitacion");
+            parrafo.textContent = tarjeta2.mensajeTarjeta;
+
+        }
+    </script>
+
+</body>
+
+</html>

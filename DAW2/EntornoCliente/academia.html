@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Objetos</title>
+    <script type="text/javascript">
+        function Alumno(nombre, edad, intereses, materia, importe) {
+            this.nombre = nombre;
+            this.edad = edad;
+            this.intereses = intereses;
+            this.materia = materia;
+            this.importe = importe;
+        }
+
+        function Academia() {
+            this.nombreAcademia = "FicAcademy";
+            this.direccion = "C/La inventada, Nº77";
+            this.ciudad = "Invent City";
+
+            this.darBienvenida = function() {
+                alert("Hola " + this.nombre + ", bienvenido a la academia " + this.nombreAcademia);
+            }
+
+            this.importeGastado = function() {
+                alert(this.nombre + " Se ha gastado " + this.importe);
+            }
+
+        }
+
+        function registro() {
+            var nomAlumno = prompt("Indica el nombre del alumno: ");
+            var edadAlumno = prompt("Indica la edad del alumno: ");
+            var interesesAlumno = new Array();
+            for (var i = 0; i < 3; i++) {
+                var interes = prompt("Indica un interes del alumno: ");
+                interesesAlumno[i] = interes;
+            }
+            var materiaAlumno = prompt("Indica la materia en la que está matriculado el alumno: ");
+            var importeAlumno = parseInt(prompt("Indica cuánto importa el alumno: "));
+
+            Alumno.prototype = new Academia();
+            var alumno1 = new Alumno(nomAlumno, edadAlumno, interesesAlumno, materiaAlumno, importeAlumno);
+
+            alumno1.darBienvenida();
+            alumno1.importeGastado();
+        }
+
+        function nuevoImporte() {
+            var nomAlumno = prompt("Indica el nombre del alumno: ");
+            var importe = parseInt(prompt("Introduce el importe gastado por el alumno: "));
+
+            Alumno.prototype = new Academia();
+            var alumno1 = new Alumno(nomAlumno, "", "", "", importe);
+            alumno1.importeGastado();
+
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        // Utilizando un constructor y prototipo:
+        // Constructor: Alumno con propiedades: nombre, edad, intereses(array), materia, importe,
+        // Prototipo: Academia con propiedades: nombreAcademia, direccion, ciudad. y métodos: darBienvenida("Hola nombre, bienvenido a la academia nombreAcademia")
+        // Boton que al pulsar pida los datos del alumno y muestre la bienvenida
+    </script>
+
+    <input type="button" value="Registro" onclick="registro()" />
+    <input type="button" value="Gasto" onclick="nuevoImporte()" />
+
+</body>
+
+</html>

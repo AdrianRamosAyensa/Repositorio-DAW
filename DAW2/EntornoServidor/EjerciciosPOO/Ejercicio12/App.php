@@ -46,8 +46,7 @@ class App
   public function cambio() {
    
       $color = $_GET[ 'color' ];
-      setcookie( "color", $color, time() + 3600 * 24 );
-    
+      $_SESSION['color'] = $color;                
     include('Home.php');
   }
   

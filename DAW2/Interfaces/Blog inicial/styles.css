@@ -47,3 +47,61 @@ a {
     right: 0px;
     margin-right: 30%;
 }
+
+@media print{
+    header{
+        border: 1px solid black;
+        font-size: 2em;
+        font-weight: bold;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    
+    }
+
+    aside {
+        display: none;
+    }
+
+    article{
+        border: none;
+    }
+
+    nav{
+        display: none;
+    }
+
+    hr{
+        display: none;
+    }
+
+    section{
+        width: 100%;
+        padding: 0;
+    }
+
+    article{
+        padding: 0;
+        page-break-inside: avoid;
+    }
+
+    a{
+        margin: 0;
+        position: relative;                     
+    }
+
+    a::after{
+        content: "("attr(href)")";
+    }
+
+    img {
+        margin-left: 5%;
+    }
+
+    img + p{
+        margin-left: 5%;
+    }
+
+    footer{
+        display: none;
+    }
+}
