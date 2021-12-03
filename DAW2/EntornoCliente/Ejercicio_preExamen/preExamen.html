@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio de entrenamiento para el primer examen</title>
+    <script>
+        var arrAlumnos = [];
+
+        function Persona(nombre, dni, edad) {
+            this.nombre = nombre;
+            this.dni = dni;
+            this.edad = edad;
+
+            this.mostrarInfo = function() {
+                alert("La persona: " + this.nombre + " con dni: " + this.dni + " tiene una edad de: " + this.edad + " años, cursa: " + this.asignatura);
+            }
+
+        }
+
+        function Alumno(asignatura, instituto) {
+            this.asignatura = asignatura;
+            this.instituto = instituto;
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <button id="btnCrearAlumnos">Crear alumnos</button>
+    <button id="btnMostrarAlumnos">Mostrar alumnos</button>
+
+    <script>
+        document.getElementById("btnCrearAlumnos").addEventListener("click", function() {
+
+            while (true) {
+
+                var nombre = prompt("Indique el nombre del alumno: ");
+                var dni = prompt("Indique el dni del alumno: ");
+                var edad = prompt("Indique el edad del alumno: ");
+
+                Alumno.prototype = new Persona(nombre, dni, edad);
+
+                var asignatura = prompt("Indique el asignatura del alumno: ");
+                var instituto = prompt("Indique el instituto del alumno: ");
+
+                var alumno = new Alumno(asignatura, instituto);
+
+                arrAlumnos.push(alumno);
+
+                var seguir = confirm("¿Introducir otro alumno?");
+
+                if (!seguir) break;
+
+            }
+
+        });
+
+
+        document.getElementById("btnMostrarAlumnos").addEventListener("click", function() {
+
+            arrAlumnos.forEach(alumno => {
+                alert(alumno.mostrarInfo());
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

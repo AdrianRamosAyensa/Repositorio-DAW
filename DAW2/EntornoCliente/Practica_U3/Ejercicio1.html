@@ -5,33 +5,34 @@
     <meta charset="UTF-8">
     <title>Ejercicio 1</title>
     <script type="text/javascript">
+        // Regex usado para la validacion de campos numéricos
+        var regExNumeral = /[0-9]+/;
+
+        // "clase" colegio en ES5, con el método de cambiar alumnos indicado por referencia
         function Colegio(nombre, nAulas, nAlumnos) {
             this.nombre = nombre;
             this.nAulas = nAulas;
             this.nAlumnos = nAlumnos;
-
-            this.cambioAlumnos(nAlumnos) {
-                this.nAlumnos = nAlumnos;
-            }
+            this.cambiaAlumnos = cambioAlumnos;
         }
 
+        // "clase" alumno en ES5, con el método de cambiar nota indicado por referencia
         function Alumno(DNI, nombre, notaMedia) {
             this.DNI = DNI;
             this.nombre = nombre;
             this.notaMedia = notaMedia;
-
-            this.cambiarNota(nota) {
-                this.notaMedia = nota;
-            }
+            this.cambiaNota = cambioNota;
         }
     </script>
 </head>
 
 <body>
+    <!-- formulario para la creacion de los colegios -->
     <form>
         <label for="nombreColegio">Nombre del colegio:&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input type="text" id="nombreColegio" />
         <br>
+        <!-- Los campos "number" en chrome no pueden ser otra cosa que números pero en mozilla si, son los que valido con el regEx del inicio del ejercicio -->
         <label for="numeroAulas">Número de aulas:&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input type="number" id="numeroAulas" />
         <br>
@@ -41,16 +42,21 @@
         <input value="Añadir colegio" type="button" id="btnColegio" onclick="crearColegio()" />
     </form>
 
+    <!-- Creacion de la tabla colegios, solo las cabeceras porque el cuerpo se genera al crear los colegios -->
     <h1>Tabla Colegios</h1>
-    <table id="fisioterapia" border="1">
-        <th></th>
-        <th>Lunes</th>
-        <th>Martes</th>
-        <th>Miercoles</th>
-        <th>Jueves</th>
-        <th>Viernes</th>
+    <table id="tableColegios" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Aulas</th>
+            <th>Alumnos</th>
+            <th></th>
+        </tr>
     </table>
 
+    <br>
+    <br>
+
+    <!-- formulario para la creacion de los alumnos -->
     <form>
         <label for="dniAlumno">DNI del alumno:&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input type="text" id="dniAlumno" />
@@ -61,12 +67,173 @@
         <label for="notaAlumno">Nota media del alumno:&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input type="number" id="notaAlumno" />
         <br>
-        <input type="button" id="btnAlumno" onclick="crearAlumno()" />
+        <input type="button" id="btnAlumno" onclick="crearAlumno()" value="Crear alumno" />
     </form>
 
     <br>
     <br>
 
+    <!-- Creacion de la tabla alumnos, solo las cabeceras porque el cuerpo se genera al crear los alumnos -->
+    <h1>Tabla Alumnos</h1>
+    <table id="tableAlumnos" border="1">
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Nota</th>
+            <th></th>
+        </tr>
+    </table>
+
+    <script>
+        // funcion de creacion de los colegios
+        function crearColegio() {
+
+            // recogida de valores de los campos para la creacion de los colegios
+            var nombreColegio = document.getElementById("nombreColegio").value;
+            var preNumeroAulas = document.getElementById("numeroAulas").value;
+            var numeroAulas = 0;
+
+            // Validacion con regEx del número de aulas del colegio, solo se admiten números 
+            if (regExNumeral.test(preNumeroAulas)) {
+                numeroAulas = preNumeroAulas;
+                document.getElementById("numeroAulas").style.backgroundColor = "transparent";
+            } else {
+                document.getElementById("numeroAulas").style.backgroundColor = "salmon";
+                return;
+            }
+
+            var preNumeroAlumnos = document.getElementById("numeroAlumnos").value;
+
+            // Validacion con regEx del número de alumnos del colegio, solo se admiten números 
+            var numeroAlumnos = 0;
+            if (regExNumeral.test(preNumeroAlumnos)) {
+                numeroAlumnos = preNumeroAlumnos;
+                document.getElementById("numeroAlumnos").style.backgroundColor = "transparent";
+            } else {
+                document.getElementById("numeroAlumnos").style.backgroundColor = "salmon";
+                return;
+            }
+
+            // creacion del objeto colegio
+            var colegio = new Colegio(nombreColegio, numeroAulas, numeroAlumnos);
+
+            var tabla = document.getElementById("tableColegios");
+
+            var fila = document.createElement("tr");
+
+            // Bucle de creacion de las celdas para las para los colegios
+            for (var i = 0; i < 4; i++) {
+                var celda = document.createElement("td");
+
+                switch (i) {
+                    case 0:
+                        celda.innerHTML = colegio.nombre;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 1:
+                        celda.innerHTML = colegio.nAulas;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 2:
+                        celda.innerHTML = colegio.nAlumnos;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 3:
+                        // boton para cambiar los alumnos de un colegio
+                        celda.innerHTML = '<input type="button" onclick="cambiarAlumnos(this)" value="Cambiar Alumnos"/>';
+                        fila.appendChild(celda);
+                        break;
+                }
+
+
+            }
+
+            tabla.appendChild(fila);
+        }
+
+        // metodos para cambiar los alumnos de un colegio
+        // el primero llama al método de la clase colegio que tiene referenciado el segundo metodo
+        function cambiarAlumnos(celda) {
+            var colegio = new Colegio();
+
+            colegio.cambiaAlumnos(celda);
+        }
+
+        function cambioAlumnos(celda) {
+
+            var nuevosAlumnos = prompt("Indique el nuevo numero de alumnos del colegio: ");
+            this.nAlumnos = nuevosAlumnos;
+            celda.parentNode.previousSibling.textContent = nuevosAlumnos;
+
+        }
+
+        // funcion de creacion de los almunos
+        function crearAlumno() {
+            var nombreAlumno = document.getElementById("nombreAlumno").value;
+            var dniAlumno = document.getElementById("dniAlumno").value;
+
+            var notaAlumno = document.getElementById("notaAlumno").value;
+
+            // creacion del objeto alumno
+            var alumno = new Alumno(dniAlumno, nombreAlumno, notaAlumno);
+
+            var tabla = document.getElementById("tableAlumnos");
+
+            var fila = document.createElement("tr");
+
+
+            // Bucle de creacion de las celdas para los datos de los alumnos
+            for (var i = 0; i < 4; i++) {
+                var celda = document.createElement("td");
+
+                switch (i) {
+                    case 0:
+                        celda.innerHTML = alumno.DNI;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 1:
+                        celda.innerHTML = alumno.nombre;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 2:
+                        celda.innerHTML = alumno.notaMedia;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 3:
+                        // boton para cambiar la nota de los alumnos
+                        celda.innerHTML = '<input type="button" onclick="cambiarNota(this)" value="Cambiar nota"/>';
+                        fila.appendChild(celda);
+                        break;
+                }
+
+
+            }
+
+            tabla.appendChild(fila);
+        }
+
+        // metodos para cambiar la nota de los alumnos
+        // el primero llama al método de la clase alumno que tiene referenciado el segundo metodo
+        function cambiarNota(celda) {
+            var alumno = new Alumno();
+
+            alumno.cambiaNota(celda);
+        }
+
+        function cambioNota(celda) {
+
+            var nuevaNota = prompt("Indique La nueva nota del alumno: ");
+            this.notaMedia = nuevaNota;
+            celda.parentNode.previousSibling.textContent = nuevaNota;
+
+        }
+    </script>
 
 </body>
 

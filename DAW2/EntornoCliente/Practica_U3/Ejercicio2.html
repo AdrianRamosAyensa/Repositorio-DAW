@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+    <script type="text/javascript">
+        // Regex usado para la validacion de campos numéricos
+        var regExNumeral = /[0-9]+/;
+
+        // clase aeropuerto
+        class Aeropuerto {
+            constructor(nombre, ciudad, nVuelos) {
+                this.nombre = nombre;
+                this.ciudad = ciudad;
+                this.nVuelos = nVuelos;
+
+            }
+
+            // metodo para cambiar el numero de vuelos
+            cambiarVuelos(celda) {
+                var numeroVuelos = prompt("Indique el nuevo numero de vuelos diarios del aeropuerto: ");
+                this.nVuelos = numeroVuelos;
+                celda.parentNode.previousSibling.textContent = numeroVuelos;
+            }
+
+        }
+
+        // clase vuelo
+        class Vuelo {
+
+            constructor(codigo, horaSalida, minSalida, horaLlegada, minLlegada) {
+                this.codigo = codigo;
+                // se genera un objeto date para la salida y la llegada
+                this.hSalida = new Date();
+                this.hSalida.setHours(horaSalida);
+                this.hSalida.setMinutes(minSalida);
+                this.hLlegada = new Date();
+                this.hLlegada.setHours(horaLlegada);
+                this.hLlegada.setMinutes(minLlegada);
+            }
+
+            // metodos para cambiar tanto la hora de salida como la de llegada
+            cambiarSalida(celda) {
+                var horaSalida = prompt("Indique la nueva hora de salida del vuelo: ");
+                var minSalida = prompt("Indique los minutos de la hora de salida del vuelo: ");
+
+                this.hSalida = new Date();
+                this.hSalida.setHours(horaSalida);
+                this.hSalida.setMinutes(minSalida);
+                celda.parentNode.previousSibling.previousSibling.textContent = this.hSalida;
+            }
+
+            cambiarLlegada(celda) {
+                var horaLlegada = prompt("Indique la nueva hora de llegada del vuelo: ");
+                var minLlegada = prompt("Indique los minutos de la hora de llegada del vuelo: ");
+
+                this.hLlegada = new Date();
+                this.hLlegada.setHours(horaLlegada);
+                this.hLlegada.setMinutes(minLlegada);
+                celda.parentNode.previousSibling.previousSibling.textContent = this.hLlegada;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Formulario para creacion de los aeropuertos -->
+    <form>
+        <label for="nombreAeropuerto">Nombre del aeropuerto:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="nombreAeropuerto" />
+        <br>
+        <label for="ciudadAeropuerto">Ciudad del aeropuerto:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="ciudadAeropuerto" />
+        <br>
+        <label for="numeroVuelos">Número de Vuelos:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" id="numeroVuelos" />
+        <br>
+        <input value="Añadir aeropuerto" type="button" id="btnAeropuerto" onclick="crearAeropuerto()" />
+    </form>
+
+    <!-- tabla de aeropuertos, solo las cabeceras -->
+    <h1>Tabla Aeropuertos</h1>
+    <table id="tableAeropuertos" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>N. Vuelos</th>
+            <th>Incrementar número de vuelos</th>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <!-- Formulario para la creacion de los vuelos -->
+    <form>
+        <label for="codigoVuelo">Código del vuelo (numérico):&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" id="codigoVuelo" />
+        <br>
+        <label for="horaSalida">Hora de la salida (hh:mm):&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="horaSalida" />
+        <br>
+        <label for="horaLlegada">Hora de la llegada (hh:mm):&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="horaLlegada" />
+        <br>
+        <input type="button" id="btnVuelo" onclick="crearVuelo()" value="Crear Vuelo" />
+    </form>
+
+    <br>
+    <br>
+
+    <!-- tabla vuelos, solo las cabeceras -->
+    <h1>Tabla Vuelos</h1>
+    <table id="tableVuelos" border="1">
+        <tr>
+            <th>Código</th>
+            <th>Hora de salida</th>
+            <th>Hora de llegada</th>
+            <th>Modificar hora de salida</th>
+            <th>Modificar hora de llegada</th>
+        </tr>
+    </table>
+
+    <script>
+        // funcion para crear los aeropuertos
+        function crearAeropuerto() {
+            var nombreAeropuerto = document.getElementById("nombreAeropuerto").value;
+            var ciudadAeropuerto = document.getElementById("ciudadAeropuerto").value;
+
+            var preNumeroVuelos = document.getElementById("numeroVuelos").value;
+            var numeroVuelos = 0;
+
+            //validacion del numero de vuelos, solo se admiten numeros
+            if (regExNumeral.test(preNumeroVuelos)) {
+                numeroVuelos = preNumeroVuelos;
+                document.getElementById("numeroVuelos").style.backgroundColor = "transparent";
+            } else {
+                document.getElementById("numeroVuelos").style.backgroundColor = "salmon";
+                return;
+            }
+
+            // creacion del objeto aeropuerto
+            var aeropuerto = new Aeropuerto(nombreAeropuerto, ciudadAeropuerto, numeroVuelos);
+
+            var tabla = document.getElementById("tableAeropuertos");
+
+            var fila = document.createElement("tr");
+
+            // Bucle de creacion de las celdas del aeropuerto
+            for (var i = 0; i < 4; i++) {
+                var celda = document.createElement("td");
+
+                switch (i) {
+                    case 0:
+                        celda.innerHTML = aeropuerto.nombre;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 1:
+                        celda.innerHTML = aeropuerto.ciudad;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 2:
+                        celda.innerHTML = aeropuerto.nVuelos;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 3:
+                        // Boton para llamar a la funcion de cambiar el numero de vuelos
+                        celda.innerHTML = '<input type="button" onclick="cambioVuelos(this)" value="Cambiar Vuelos"/>';
+                        fila.appendChild(celda);
+                        break;
+                }
+
+
+            }
+
+            tabla.appendChild(fila);
+        }
+
+        // Se llama a la funcion de la clase aeropuerto para cambiar los vuelos
+        function cambioVuelos(celda) {
+
+            var aeropuerto = new Aeropuerto();
+            aeropuerto.cambiarVuelos(celda);
+
+        }
+
+        // funcion de creacion de los vuelos
+        function crearVuelo() {
+            var preCodigoVuelo = document.getElementById("codigoVuelo").value;
+            var codigoVuelo = 0;
+
+            // validacion del codigo del vuelo, solo se admiten numeros
+            if (regExNumeral.test(preCodigoVuelo)) {
+                codigoVuelo = preCodigoVuelo;
+                document.getElementById("codigoVuelo").style.backgroundColor = "transparent";
+            } else {
+                document.getElementById("codigoVuelo").style.backgroundColor = "salmon";
+                return;
+            }
+
+            // se recogen la salida y la llegada en hh:mm y con split se separan en horas y minutos para la creacion del objeto date
+            var hSalida = document.getElementById("horaSalida").value;
+            var horaSalida = hSalida.split(':')[0];
+            var minSalida = hSalida.split(':')[1];
+
+            var hLlegada = document.getElementById("horaLlegada").value;
+            var horaLlegada = hLlegada.split(':')[0];
+            var minLlegada = hLlegada.split(':')[1];
+
+            // creacion del vuelo
+            var vuelo = new Vuelo(codigoVuelo, horaSalida, minSalida, horaLlegada, minLlegada);
+
+            var tabla = document.getElementById("tableVuelos");
+
+            var fila = document.createElement("tr");
+
+            // Bucle de creacion de las celdas del vuelo
+            for (var i = 0; i < 5; i++) {
+                var celda = document.createElement("td");
+
+                switch (i) {
+                    case 0:
+                        celda.innerHTML = vuelo.codigo;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 1:
+                        celda.innerHTML = vuelo.hSalida;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 2:
+                        celda.innerHTML = vuelo.hLlegada;
+                        fila.appendChild(celda);
+                        break;
+
+                    case 3:
+                        // boton para cambiar la hora de salida del vuelo
+                        celda.innerHTML = '<input type="button" onclick="cambioSalida(this)" value="Cambiar salida"/>';
+                        fila.appendChild(celda);
+                        break;
+
+                    case 4:
+                        // boton para cambiar la hora de llegada del vuelo
+                        celda.innerHTML = '<input type="button" onclick="cambioLlegada(this)" value="Cambiar llegada"/>';
+                        fila.appendChild(celda);
+                        break;
+                }
+
+
+            }
+
+            tabla.appendChild(fila);
+        }
+
+        // funciones que llaman a los metodos de Vuelo para cambiar las horas de salida y llegada
+        function cambioSalida(celda) {
+
+            var vuelo = new Vuelo();
+            vuelo.cambiarSalida(celda);
+
+        }
+
+        function cambioLlegada(celda) {
+
+            var vuelo = new Vuelo();
+            vuelo.cambiarLlegada(celda);
+
+        }
+    </script>
+
+</body>
+
+</html>

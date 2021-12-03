@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+    <script type="text/javascript">
+        // arrays de monitores y fisioterapeutas
+        var arrMonitores = [];
+        var arrFisios = [];
+
+        // regex para validacion de numeros de telefono (9 numeros)
+        var RegExTel = /[0-9]{9}/;
+
+        // clase empleado de la que heredan Fisio y Monitor
+        class Empleado {
+            constructor(nombreEmpleado, dniEmpleado, telefonoEmpleado) {
+                this.nombreEmpleado = nombreEmpleado;
+                this.dniEmpleado = dniEmpleado;
+                this.telefonoEmpleado = telefonoEmpleado;
+            }
+        }
+
+        class Fisio extends Empleado {
+            constructor(nombreEmpleado, dniEmpleado, telefonoEmpleado) {
+                super(nombreEmpleado, dniEmpleado, telefonoEmpleado);
+            }
+        }
+
+        class Monitor extends Empleado {
+            constructor(nombreEmpleado, dniEmpleado, telefonoEmpleado, actividades, sesionesSemanales, sesionesComun) {
+                super(nombreEmpleado, dniEmpleado, telefonoEmpleado);
+                this.actividades = actividades;
+                this.sesionesSemanales = sesionesSemanales;
+                this.sesionesComun = sesionesComun;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- botones para crear los empleados y mostrarlos -->
+    <button onclick="crearFisio()">Crear fisio</button><br>
+    <button onclick="crearMonitor()">Crear monitor</button><br>
+    <button onclick="listarFisio()">Listar fisios</button><br>
+    <button onclick="listarMonitor()">Listar monitores</button><br>
+
+    <script>
+        // funcion de creacion de los fisioterapeutas
+        function crearFisio() {
+
+            var valido = false;
+            var nombre = prompt("Indique el nombre del fisio");
+            var dni = prompt("indique el dni del fisio");
+            var telefono;
+
+            // no se acepta el numero de telefono hasta que sean exactemente 9 numeros
+            do {
+                telefono = prompt("Indique el teléfono del fisio");
+            } while (!RegExTel.test(telefono))
+
+            // creacion del fisioterapeuta y adicion al array de fisios
+            var fisio = new Fisio(nombre, dni, telefono);
+            arrFisios.push(fisio);
+        }
+
+        // funcion de creacion de los monitores
+        function crearMonitor() {
+            var nombre = prompt("Indique el nombre del monitor");
+            var dni = prompt("Indique el dni del monitor");
+            var telefono;
+
+            // no se acepta el numero de telefono hasta que sean exactemente 9 numeros
+            do {
+                telefono = prompt("Indique el teléfono del monitor");
+            } while (!RegExTel.test(telefono))
+
+            var actividades = [];
+            var actividad = "";
+
+            // se añaden actividades hasta que el usuario le da a enviar sin escribir nada
+            do {
+                actividad = prompt("Indique una actividad del monitor");
+                if (actividad != "") actividades.push(actividad);
+            } while (actividad != "")
+
+            var sesionesSemanales = [];
+            var sesionSemanal = "";
+
+            // se añaden sesiones semanales hasta que el usuario le da a enviar sin escribir nada
+            do {
+                sesionSemanal = prompt("Indique una sesión semanal del monitor");
+                if (sesionSemanal != "") sesionesSemanales.push(sesionSemanal);
+            } while (sesionSemanal != "")
+
+            var sesionesComun = [];
+            var sesionComun = "";
+
+            // se añaden sesiones comunes hasta que el usuario le da a enviar sin escribir nada
+            do {
+                sesionComun = prompt("Indique una sesión común del monitor");
+                if (sesionComun != "") sesionesComun.push(sesionComun);
+            } while (sesionComun != "")
+
+            // creacion del monitor y adicion al array
+            var monitor = new Monitor(nombre, dni, telefono, actividades, sesionesSemanales, sesionesComun);
+            arrMonitores.push(monitor);
+        }
+
+        // funcion de lista los fisioterapeutas en un alert cada uno
+        function listarFisio() {
+
+            arrFisios.forEach(element => {
+                alert("\nNombre: " + element.nombreEmpleado + "\nDni: " + element.dniEmpleado + "\nTeléfono: " + element.telefonoEmpleado);
+            });
+        }
+
+        // funcion de lista los monitores en un alert cada uno
+        function listarMonitor() {
+            arrMonitores.forEach(element => {
+                alert("Nombre: " + element.nombreEmpleado + "\nDni: " + element.dniEmpleado + "\nTeléfono: " + element.telefonoEmpleado + "\nLista Actividades: " + element.actividades + "\nSesiones Semanales: " + element.sesionesSemanales + "\nSesiones Comunes: " + element.sesionesComun);
+            })
+        }
+    </script>
+
+</body>
+
+</html>
