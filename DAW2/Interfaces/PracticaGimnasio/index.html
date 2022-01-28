@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html>
 
+<!-- head de la pagina -->
+
 <head>
     <meta charset="UTF-8">
     <title>Gimnasio ficticio</title>
+    <!-- favicon de la pagina -->
     <link rel="shortcut icon" href="img/favicon.png">
+    <!-- enlace a la hoja de estilos -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
+<!-- body de la pagina -->
+
 <body>
+    <!-- header de la pagina -->
     <header>
+        <!-- logo del gimnasio -->
         <img id="logo" src="img/cropped-Logo.png">
+        <!-- menu navegacion de la pagina -->
         <nav id="navPrincipal">
+            <!-- para el menu de navegacion se ha usado una lista desordenada en horizontal con los enlaces a las distintas funciones del gimnasio -->
             <ul id="listaNav">
-                <li class="navItem"><a href="pages/imc.html">IMC</a></li>
-                <li class="navItem"><a href="pages/fcm.html">FCM</a></li>
-                <li class="navItem"><a href="pages/horarios.html">Horario</a></li>
+                <li class="navItem subrayadoNav"><a href="HTML/imc.html">IMC</a></li>
+                <li class="navItem subrayadoNav"><a href="HTML/fcm.html">FCM</a></li>
+                <li class="navItem subrayadoNav"><a href="HTML/horarios.html">Horario</a></li>
             </ul>
         </nav>
+        <!-- enlace al login no funcional que trata de un enlace cuyo contenido es una imagen -->
         <a id="loginLink" href="#">
             <img id="loginImg" alt="login" src="img/login-icon.png" width="70" height="70">
         </a>
     </header>
 
+    <!-- section de la pagina -->
     <section id="motivacion">
-        <p>¿Cómo alcanzar una meta?<br>Sin prisa pero sin pausa</p>
+        <article>
+            <p>¿Cómo alcanzar una meta?<br>Sin prisa pero sin pausa</p>
 
-        <a id="btnMotiv" href="pages/horarios.html"><span></span>HORARIO</a>
+            <!-- enlace que lleva a la hoja de horarios -->
+            <a id="btnMotiv" class="subrayado" href="pages/horarios.html">HORARIO</a>
+        </article>
+        <!-- article de la galeria -->
+        <article>
+            <p>Galería de fotografías</p>
+            <!-- contenedor de la galeria de imágenes -->
+            <div id="galeria">
+                <img class="imagen" src="img/gap.png">
+                <img class="imagen" src="img/kickboxing.jpg">
+                <img class="imagen" src="img/maquina.jpg">
+                <img class="imagen" src="img/maspesas.jpeg">
+                <img class="imagen" src="img/pesas.jpg">
+                <img class="imagen" src="img/running.jpg">
+            </div>
+        </article>
     </section>
 
 </body>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 3 ajax</title>
+
+    <script>
+        function lanzar() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else {
+                alert("Su navegador es una mierda que no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = crearLista;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "noticias.xml", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        }
+    </script>
+</head>
+
+<body onload="lanzar()">
+
+    <script>
+        function crearLista() {
+
+            var documentoXml = null;
+
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoXml = peticion_http.responseXML;
+
+            }
+
+            if (documentoXml != null) {
+                var noticias = documentoXml.getElementsByTagName("noticia");
+
+                var lista = document.createElement("ul");
+
+                for (let index = 0; index < noticias.length; index++) {
+                    var fila = document.createElement("li");
+
+                    fila.innerHTML = noticias[index].getElementsByTagName("cuerpo")[0].textContent;
+
+                    lista.appendChild(fila);
+                }
+                document.getElementsByTagName("body")[0].appendChild(lista);
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

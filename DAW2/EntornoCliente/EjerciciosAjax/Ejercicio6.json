@@ -1,0 +1,28 @@
+[{
+        "nombre": "step",
+        "descripcion": "Aerobic sobre un escalón",
+        "tipo": ["cardio", "baile"],
+        "duracion": 60,
+        "calorias": 350,
+        "beneficios": ["Resistencia general", "coordinación"],
+        "tipoEjercicio": "Ejercicio cardiovascular"
+    },
+    {
+        "nombre": "gbody",
+        "descripcion": "Zumba con pesos",
+        "tipo": ["tono-cardio", "baile"],
+        "duracion": 30,
+        "calorias": 500,
+        "beneficios": ["Resistencia general", "tonificación"],
+        "tipoEjercicio": "Tonificación"
+    },
+    {
+        "nombre": "box",
+        "descripcion": "Ejercicios con pesos",
+        "tipo": ["tono-fuerza", "tono-cardio"],
+        "duracion": 45,
+        "calorias": 300,
+        "beneficios": ["fuerza", "tonificación"],
+        "tipoEjercicio": "Tonificación"
+    }
+]

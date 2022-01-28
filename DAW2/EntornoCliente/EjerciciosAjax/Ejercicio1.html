@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1 Ajax</title>
+
+    <script>
+        // function procesaRespuesta() {
+
+        //     var parrafo = document.getElementById("parrafo");
+
+        //     if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+        //         //si los datos estan listos y la respuesta es correcta 
+        //         parrafo.textContent = peticion_http.responseText;
+
+        //     }
+        // }
+
+        function ejecutar() {
+
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+                //si los datos estan listos y la respuesta es correcta 
+                var boton = document.getElementById("btnHola");
+                boton.style.display = "none";
+
+                var parrafo = document.createElement("p");
+
+                parrafo.innerHTML = peticion_http.responseText;
+
+                document.getElementsByTagName("body")[0].appendChild(parrafo);
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p id="parrafo"></p>
+    <script type="text/javascript">
+        //comprobar que el navegador soporta Ajax
+        function enviar() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else {
+                alert("Su navegador es una mierda que no soporta Ajax");
+            }
+
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = ejecutar;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "noticias.txt", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        }
+    </script>
+
+    <button id="btnHola" type="button" onclick="enviar()"></button>
+</body>
+
+</html>

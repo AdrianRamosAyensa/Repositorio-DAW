@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 19. Eventos de on, off, one</title>
+    <SCRIPT SRC="../software/jquery-3.4.1.min.js" TYPE="TEXT/JAVASCRIPT"></SCRIPT>
+
+    <script>
+        $(document).ready(function() {
+            $("#btn_1").on("click", function() {
+                alert("evento click funcionando");
+            });
+
+            $("#btn_2").click(function() {
+                $("#btn_1").off("click");
+                alert("Se ha eliminado el evento click del boton anterior");
+            });
+
+            $("#btn_3").one("click", function() {
+                alert("ya no podras hacer click sobre mi");
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <button type="button" id="btn_1">Haz click (on)</button>
+    <button type="button" id="btn_2">Haz click (off)</button>
+    <button type="button" id="btn_3">Haz click (one)</button>
+</body>
+
+</html>

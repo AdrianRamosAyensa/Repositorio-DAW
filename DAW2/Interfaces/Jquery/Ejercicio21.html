@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 20. Eventos</title>
+    <SCRIPT SRC="../software/jquery-3.4.1.min.js" TYPE="TEXT/JAVASCRIPT"></SCRIPT>
+
+    <script>
+        $(document).ready(function() {
+            $("#btn_0").click(function() {
+                $("#cajita").animate({
+                    left: "+=300"
+                }, 100).animate({
+                    left: "-=300"
+                }, 100);
+            });
+
+            $("#btn_1").click(function() {
+                $("#cajita").animate({
+                    top: "+=300"
+                }, 100).animate({
+                    top: "-=300"
+                }, 100);
+            });
+
+            $("#btn_2").click(function() {
+                $("#cajita").animate({
+                    width: "+=300",
+                    height: "+=300"
+                }, 100).animate({
+                    width: "+=300",
+                    height: "+=300"
+                }, 100);
+                for (let index = 0; index < 500000; index++) {
+
+                    $("#cajita").css("background-color", "#" + ((1 << 24) * Math.random() | 0).toString(16));
+                    sleep(50);
+                }
+            });
+
+        });
+    </script>
+
+    <style>
+        #cajita {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <button type="button" id="btn_0">horizontal</button>
+        <button type="button" id="btn_1">vertical</button>
+        <button type="button" id="btn_2">dimension</button>
+    </div>
+    <div id="cajita"></div>
+</body>
+
+</html>

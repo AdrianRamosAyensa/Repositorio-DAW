@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <title>Ejercicio 4</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="author" content="">
+
+    <style>
+        p,
+        button {
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+        function cargarAJAX() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else {
+                alert("Su navegador es una mierda que no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = crearAnimales;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "json_demo.json", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+
+
+        }
+
+        function crearAnimales() {
+            var div = document.getElementById("resultado");
+
+            var documentoTxt = null;
+
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoTxt = peticion_http.responseText;
+
+            }
+
+            if (documentoTxt != null) {
+
+                var documentoJson = JSON.parse(documentoTxt);
+                document.getElementById("nombre").innerHTML = documentoJson.name;
+
+            }
+
+
+        }
+    </script>
+
+</head>
+
+
+
+<body onload="cargarAJAX()">
+
+    <p id="nombre">
+
+    </p>
+
+</body>
+
+</html>

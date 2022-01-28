@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 3 ajax</title>
+
+    <script>
+        function lanzar() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else {
+                alert("Su navegador es una mierda que no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = crearTabla;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "cd_catalog.xml", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        }
+    </script>
+</head>
+
+<body onload="lanzar()">
+
+    <script>
+        function crearTabla() {
+
+            var documentoXml = null;
+
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoXml = peticion_http.responseXML;
+
+            }
+
+            if (documentoXml != null) {
+                var cds = documentoXml.getElementsByTagName("CD");
+
+                var table = document.createElement("table");
+                table.setAttribute("border", "1");
+
+                var fila1 = document.createElement("tr");
+
+                var header1 = document.createElement("th");
+                header1.innerHTML = "Artista";
+                fila1.appendChild(header1);
+                var header2 = document.createElement("th");
+                header2.innerHTML = "Título";
+                fila1.appendChild(header2);
+
+                table.appendChild(fila1);
+
+                for (let index = 0; index < cds.length; index++) {
+                    var fila = document.createElement("tr");
+
+                    var celda1 = document.createElement("td");
+                    celda1.innerHTML = cds[index].getElementsByTagName("ARTIST")[0].textContent;
+                    fila.appendChild(celda1);
+
+                    var celda2 = document.createElement("td");
+                    celda2.innerHTML = cds[index].getElementsByTagName("TITLE")[0].textContent;
+                    fila.appendChild(celda2);
+
+                    table.appendChild(fila);
+                }
+                document.getElementsByTagName("body")[0].appendChild(table);
+
+                // cds.forEach(element => {
+
+                //     var fila = document.createElement("tr");
+
+                //     var celda1 = document.createElement("td");
+                //     celda1.innerHTML = element.getElementsByTagName("ARTIST").textContent;
+                //     fila.appendChild(celda1);
+
+                //     var celda2 = document.createElement("td");
+                //     celda2.innerHTML = element.getElementsByTagName("TITLE").textContent;
+                //     fila.appendChild(celda2);
+
+
+
+                // });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 18. Eventos de resize y scroll</title>
+    <SCRIPT SRC="../software/jquery-3.4.1.min.js" TYPE="TEXT/JAVASCRIPT"></SCRIPT>
+
+    <script>
+        $(document).ready(function() {
+            $(window).resize(function(e) {
+                var ancho = $(this).width();
+                var alto = $(this).height();
+                $("#resultado").html("ancho = " + ancho + " alto = " + alto);
+            });
+
+            $("#contenido").scroll(function() {
+                $("#resultado1").html("posicion del scroll de la caja: " + $(this).scrollTop());
+            });
+
+        });
+    </script>
+
+    <style>
+        #contenido {
+            width: 250px;
+            height: 250px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="contenido">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
+        Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis. In aliquam sem fringilla
+        ut morbi tincidunt. Condimentum mattis pellentesque id nibh tortor id aliquet. At tempor commodo ullamcorper a lacus vestibulum sed. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Curabitur vitae nunc sed velit. Lacus sed turpis
+        tincidunt id. Mi in nulla posuere sollicitudin aliquam.</div>
+    <div id="resultado"></div>
+    <div id="resultado1"></div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 16. Eventos de teclado</title>
+    <SCRIPT SRC="../software/jquery-3.4.1.min.js" TYPE="TEXT/JAVASCRIPT"></SCRIPT>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#campo").keypress(function(e) {
+                $("#resultado").html(e.charCode + "->" + String.fromCharCode(e.charCode));
+
+                if ($(this).val() == "garulo") {
+                    alert("garulo");
+                }
+            });
+
+            $("#campo").keydown(function(e) {
+
+                alert("Evento keydown: has pulsado la tecla " + e.key + "->" +
+                    e.keyCode);
+
+            });
+
+            $("#soltar").keyup(function(e) {
+                alert("Evento keyup: has soltado la tecla " + e.key + "->" +
+                    e.keyCode);
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="campo">
+    <div id="resultado"></div>
+
+    <input type="text" id="soltar">
+</body>
+
+</html>

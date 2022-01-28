@@ -1,12 +1,29 @@
+/* Estilo del header, fondo en un gris medio transparente y una altura de 100 píxeles */
+
 header {
     background-color: rgba(255, 255, 255, 0.6);
     height: 100px;
 }
 
+
+/* Estilos del body: una imagen como fondo estirada para ocupar toda la pagina y todo el texto alineado al centro */
+
 body {
     background: url("../img/background.jpg") center center no-repeat;
     background-size: 1920px 2600px;
+    text-align: center;
+    font-family: calibri;
 }
+
+
+/* Estilos de los párrafos: color de fuente de un verde clarito */
+
+p {
+    color: lightgreen;
+}
+
+
+/* Estilos del logo: 150px de ancho, alineado con el resto del header, con un margen de 10px y flotando a la izquierda */
 
 #logo {
     width: 150px;
@@ -15,13 +32,21 @@ body {
     margin: 10px;
 }
 
+
+/* Estilos del nav: Centrado en el header, ocupando un 70% de este, alineado con el resto del header y con una fuente negra de tamaño 26px */
+
 #navPrincipal {
     text-align: center;
-    width: 80%;
+    margin: 0 auto;
+    width: 70%;
     display: inline-flex;
     color: black;
     font-size: 26px;
+    font-family: helvetica, arial, sans-serif;
 }
+
+
+/* Estilos de la lista del nav: sin estilos de lista, alineada en bloque de los items con un padding de 18px y centrada */
 
 #navPrincipal #listaNav {
     list-style: none;
@@ -30,16 +55,17 @@ body {
     margin: 0 auto;
 }
 
+
+/* Estilos de los items del nav: margen superior de 20 pixeles, altura de 50px  */
+
 #navPrincipal #listaNav .navItem {
     float: left;
     margin-top: 20px;
     height: 50px;
-    border-radius: 50%;
 }
 
-#navPrincipal #listaNav .navItem:hover {
-    background-color: lightgreen;
-}
+
+/* Estilos de los enlaces del nav: fuente negra y en negrita, sin decoracion, 20 pixeles de tamaño y un padding de 18px */
 
 #navPrincipal #listaNav .navItem a {
     color: black;
@@ -50,9 +76,7 @@ body {
 }
 
 
-/* #navPrincipal #listaNav .navItem a:hover {
-    background-color: lightgreen;
-}*/
+/* Estilos de la imagen (enlace) del login: alineada con el resto del header, ancho de 50 pixeles, flotando a la derecha y con margenes de: 10,10,30,10 */
 
 #loginLink {
     display: inline-flex;
@@ -62,8 +86,11 @@ body {
     margin-right: 30px;
 }
 
-#motivacion {
-    color: #fff;
+
+/* Estilos de la section: color del texto verde claro con un tamaño de 40 pixeles y en negrita, un margen por arriba de 200px y con el texto alineado al centro */
+
+section {
+    color: lightgreen;
     font-size: 40px;
     font-weight: bold;
     width: 100%;
@@ -71,87 +98,101 @@ body {
     text-align: center;
 }
 
-#motivacion p {
+
+/* Estilos del los parrafos del section: texto centrado */
+
+section p {
     text-align: center;
     vertical-align: middle;
 }
 
 
-/*#btnMotiv {
+/* Estilos del boton (enlace) central: fondo transparente, color verdeclaro, sin decoracion de texto, padding de 10 pixeles, las transiciones duran 1 segundo, el tamaño de fuente de 30 pixeles, la fuente es verdana y un espaciado de letras de 4 pixeles */
+
+#btnMotiv {
     background-color: transparent;
-    color: white;
-    font-size: 20px;
+    color: lightgreen;
     text-decoration: none;
     padding: 10px;
     transition: 1s;
-}*/
-
-#btnMotiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-transform: uppercase;
-    text-decoration: none;
-    text-align: center;
-    /* line-height: 2; */
-    color: white;
-    font-size: 30px;
-    font-family: verdana;
+    font-size: 40px;
+    font-family: helvetica, arial, sans-serif;
     letter-spacing: 4px;
-    /* use combination of any two */
-    /* 1. */
-    padding: 5px;
-    /* 2. */
-    /*padding-left: 5px;*/
-    /* padding-right: 5px; */
 }
 
-#btnMotiv::before,
-#btnMotiv::after,
-span::before,
-span::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: transparent;
-    transition: 1s;
-    /* -webkit-mix-blend-mode: hue; */
+
+/* inicializacion del "subrayado" que tendra el boton central, se hace en el after del elemento para que aparezca debajo, probé con before pero lo hacía arriba */
+
+.subrayado::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    transition: all .8s;
 }
 
-#btnMotiv::before {
-    top: -2px;
-    left: -2px;
-    /* border-top: 2px solid white;
-    border-left: 2px solid white; */
+
+/* al pasar el raton por encima del "boton" central, aumentará el tamaño del subrayado hasta el 20% de la pagina y el color de este será blanco (en vez de transparente como al inicio para que no aparezca) */
+
+.subrayado:hover::after {
+    width: 20%;
+    background: #ffffff;
 }
 
-#btnMotiv::after {
-    top: -2px;
-    right: -2px;
-    /* border-top: 2px solid white;
-    border-right: 2px solid white; */
+
+/* inicializacion del "subrayado" que tendran los enlaces del nav, se hace en el after del elemento para que aparezca debajo, probé con before pero lo hacía arriba */
+
+.subrayadoNav::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    transition: all .8s;
 }
 
-span::before {
-    bottom: -2px;
-    left: -2px;
-    border-bottom: 2px solid white;
-    /* border-left: 2px solid white; */
+
+/* al pasar el raton por encima de los enlaces del nav, aumentará el tamaño del subrayado hasta el 100% del elemento y el color de este será negro (en vez de transparente como al inicio para que no aparezca) */
+
+.subrayadoNav:hover::after {
+    width: 100%;
+    background: #000;
 }
 
-span::after {
-    bottom: -2px;
-    right: -2px;
-    border-bottom: 2px solid white;
-    /* border-right: 2px solid white; */
+
+/* Estilos del contenedor de la galeria: ocupa un 70% del ancho de la pagina, centrado en esta y cuyo contenido está ordenado en flex con espaciado entre los elementos */
+
+#galeria {
+    width: 70%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    display: flex;
+    margin: 0 auto;
 }
 
-#btnMotiv:hover::before,
-#btnMotiv:hover::after,
-#btnMotiv:hover span::before,
-#btnMotiv:hover span::after {
-    width: calc( 210px / 2);
-    height: calc( 50px / 2);
+
+/* Estilos de las imagenes de la galeria: ordenadas por flex, ancho de 350 pixeles, alto de 250 pixeles y un borde de 2 pixeles solido blanco */
+
+.imagen {
+    display: flex;
+    width: 350px;
+    height: 250px;
+    border: 2px solid white;
+}
+
+
+/* Media query para la impresion de la pagina, se le quita el fondo a la pagina y las imagenes y el logo son mas pequeñas */
+
+@media print {
+    body {
+        background: '';
+    }
+    .imagen {
+        width: 150px;
+        height: 100px;
+    }
+    #logo {
+        width: 150px;
+    }
 }

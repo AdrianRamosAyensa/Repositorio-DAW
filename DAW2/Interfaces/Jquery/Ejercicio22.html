@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 22. Eventos</title>
+    <SCRIPT SRC="../software/jquery-3.4.1.min.js" TYPE="TEXT/JAVASCRIPT"></SCRIPT>
+
+    <script>
+        var imagenes = ['img/img1.jpg']
+        $(document).ready(function() {
+            $("#flecha").hide();
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $("#flecha").show();
+                } else {
+                    $("#flecha").hide();
+                }
+            });
+
+            $("#flecha").click(function() {
+                $("html , body").animate({
+                    scrollTop: $("#parrafo").offset().top
+                }, 1000);
+            });
+
+        });
+    </script>
+
+    <style>
+        #cajita {
+            font-size: 30px;
+        }
+        
+        #flecha {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            font-size: 50px;
+            font-weight: bold;
+            background-color: brown;
+            color: cornsilk;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="flecha">^</div>
+    <div id="cajita">
+    </div>
+</body>
+
+</html>

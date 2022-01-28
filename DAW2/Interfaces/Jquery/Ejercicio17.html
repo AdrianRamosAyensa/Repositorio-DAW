@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 17. Eventos de tocacion de pantalla</title>
+    <SCRIPT SRC="../software/jquery-3.4.1.min.js" TYPE="TEXT/JAVASCRIPT"></SCRIPT>
+
+    <script>
+        $(document).ready(function() {
+
+            $(document).on("touchstart", function(e) {
+                e.preventDefault();
+                $("resultado").text("touchstart(): Algo ha tocado la pantalla");
+            });
+
+            $(document).on("touchend", function(e) {
+                e.preventDefault();
+                $("resultado").text("touchend(): Algo ha dejado de tocar la pantalla");
+            });
+
+            $(document).on("touchmove", function(e) {
+                e.preventDefault();
+                $("resultado").text("touchmove(): Algo se ha movido por la pantalla");
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="resultado"></div>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <title>Ejercicio 4</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="author" content="">
+
+    <style>
+        p,
+        button {
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+        function cargarAJAX() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+                alert("Su navegador es una mierda pero que al menos soporta Ajax");
+            } else {
+                alert("Su navegador es una mierda que no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = crearAnimales;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "animales.xml", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+
+
+        }
+
+        function crearAnimales() {
+            var div = document.getElementById("resultado");
+
+            var documentoXml = null;
+
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoXml = peticion_http.responseXML;
+
+            }
+
+            if (documentoXml != null) {
+
+                div.innerHTML = "En proceso";
+
+                var animales = documentoXml.getElementsByTagName("animal");
+
+                var lista = document.createElement("ul");
+
+                for (let index = 0; index < animales.length; index++) {
+
+                    // var animal = document.createElement("ul");
+
+                    var fila1 = document.createElement("li");
+                    fila1.innerHTML = animales[index].getElementsByTagName("nombre")[0].textContent + "<br/>" + animales[index].getElementsByTagName("especie")[0].textContent + "<br/>" + animales[index].getElementsByTagName("patas")[0].textContent;
+                    lista.appendChild(fila1);
+
+                    lista.innerHTML += "<br/>";
+
+                    // var fila2 = document.createElement("li");
+                    // fila2.innerHTML = animales[index].getElementsByTagName("especie")[0].textContent;
+                    // animal.appendChild(fila2);
+
+                    // var fila3 = document.createElement("li");
+                    // fila3.innerHTML = animales[index].getElementsByTagName("patas")[0].textContent;
+                    // animal.appendChild(fila3);
+
+                    // lista.appendChild(animal);
+                }
+
+                div.innerHTML = "";
+                div.appendChild(lista);
+            }
+
+
+        }
+    </script>
+
+</head>
+
+
+
+<body>
+
+    <p>Se cargará el contenido del archivo: animales.xml</p>
+
+    <button id="btn1">Cargar texto de archivo externo </button>
+
+    <div id="resultado">Estado de la carga.</div>
+
+
+
+
+
+    <script>
+        document.getElementById("btn1").addEventListener("click", cargarAJAX, false);
+    </script>
+
+</body>
+
+</html>

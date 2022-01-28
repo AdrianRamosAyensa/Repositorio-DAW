@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tabla en javascript</title>
+    <script type="text/javascript" src="../js/horario.js"></script>
+</head>
+
+<body>
+
+    <h1>Horario de actividades</h1>
+    <table id="horario" border="1">
+        <th></th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miercoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+        <th>Sabado</th>
+    </table>
+
+    <div id="seleccionActividades">
+
+        <input type="checkbox" onclick="checkClic('Zumba')" value="zumba">Zumba</input>
+        <input type="checkbox" onclick="checkClic('Spinning')" value="spinning">Spinning</input>
+        <input type="checkbox" onclick="checkClic('Pilates')" value="pilates">Pilates</input>
+        <input type="checkbox" onclick="checkClic('Kickboxing')" value="kickboxing">Kickboxing</input>
+        <input type="checkbox" onclick="checkClic('Yoga')" value="yoga">Yoga</input>
+        <input type="checkbox" onclick="checkClic('Natacion')" value="natacion">Natacion</input>
+        <input type="checkbox" onclick="checkClic('Gap')" value="gap">Gap</input>
+
+    </div>
+
+    <br>
+    <br>
+
+    <h1>Horario fisioterapia</h1>
+    <table id="fisioterapia" border="1">
+        <th></th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miercoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+    </table>
+
+    <select class="selectFisios" name="selectFisios" onchange="fisioChange()">
+        <option hidden selected>Selecciona una opción</option>
+        <option value="Marta">Marta</option>
+        <option value="Paco">Paco</option>
+        <option value="Juan">Juan</option>
+        <option value="Alicia">Alicia</option>
+        <option value="Pedro">Pedro</option>
+        <option value="Julia">Julia</option>
+        <option value="Oscar">Oscar</option>
+        <option value="Manuel">Manuel</option>
+        <option value="Antonio">Antonio</option>
+      </select>
+
+    <script>
+        tabla1();
+        tabla2();
+    </script>
+
+</body>
+
+</html>
