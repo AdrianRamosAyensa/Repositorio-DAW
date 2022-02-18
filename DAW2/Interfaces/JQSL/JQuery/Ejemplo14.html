@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejemplo14. Evento toggle</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#mostrar_panel").click(function () {
+                if ($("#panel-oculto").css("display") == "none") {
+                    $("#panel-oculto").toggle("fast");
+                    $(this).val("Infor -");
+                } else {
+                    $("#panel-oculto").toggle("fast");
+                    $(this).val("Infor +");
+                }
+            });
+
+            $("#mostrar_menu").click(function(){
+                if($("#menu_oculto").css("display")=="none"){
+                    $("#menu_oculto").toggle("fast");
+                    $(this).val("Menú -");
+                }else{
+                    $("#menu_oculto").toggle("fast");
+                    $(this).val("Menú +");
+                }
+            });
+
+        });
+
+    </script>
+
+    <style media="screen">
+        body{
+            color: white;
+        }
+        #mostrar_panel{
+            position: fixed;
+            top: 10px;
+            left:10px;
+        }
+        #panel-oculto {
+            display: none;
+            top: 20px;
+            padding-left: 120px;
+            padding-top: 30px;
+            padding-bottom: 40px;
+            padding-right: 30px;
+            margin-top: 20px;
+            width: 800px;
+            height: auto;
+            background-color: #222;
+            border-radius: 15px;
+        }
+        #mostrar_menu{
+            position: fixed;
+            top:60px;
+            left: 10px;
+        }
+        #menu_oculto{
+            display: none;
+            width: 800px;
+            height: auto;
+            padding-left: 120px;
+            padding-top: 30px;
+            padding-bottom: 40px;
+            padding-right: 30px;
+            margin-top: 20px;
+            background-color: #222;
+            border-radius: 15px;
+
+        }
+        li{
+            list-style: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="panel-oculto">
+        <h1>PANEL DESLIZANTE</h1>
+        <p>Aquí está el panel deslizante realizado con JQuery con la funcion de alterar (toggle) y algo de CSS3 para las esquias redondeadas.</p>
+        <p>Este panel también se puede colocar a la derecha.</p>
+        <p>Esto podría ser particularmente útil si, <a href="#">like me</a>, tiene un diseño de sitio web alineado a la izquierda.</p>
+        <h1>UN POCO SOBRE MI</h1>
+    </div>
+
+    <div id="menu_oculto">
+        <h1>MENÚ PANEL 1</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">A cerca de</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+    </div>
+    <input type="button" id="mostrar_panel" value="Infor +">
+    <input type="button" id="mostrar_menu" value="Menú +">
+</body>
+
+</html>

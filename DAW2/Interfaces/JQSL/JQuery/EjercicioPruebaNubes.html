@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo 23</title>
+    <script src="JQuery/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+    <script>
+        var ancho = $(window).width();
+        var alto = $(window).height();
+        var ancho1 = $(window).width() - $(".cuadro").width();
+        var alto1 = $(window).height() - $(".cuadro").height();
+
+        var reproducirNube1 = function() {
+
+            $("#nube1").animate({
+                display: "block"
+            }, 10).animate({
+                left: "120%"
+            }, 3000).animate({
+                display: "none"
+            }, 10).animate({
+                left: "-20%"
+            }, 10);
+            timer = setTimeout('reproducirNube1()', 10);
+        }
+        var reproducirNube2 = function() {
+
+            $("#nube2").animate({
+                display: "block"
+            }, 10).animate({
+                left: "-20%"
+            }, 4000).animate({
+                display: "none"
+            }, 10).animate({
+                left: "120%"
+            }, 10);
+            timer = setTimeout('reproducirNube2()', 10);
+        }
+        var reproducirCuadro = function(padLR, padTB, topeAncho, topeAlto) {
+            $("#cuadro").animate({
+                width: ancho - padLR
+            }, 2000);
+            $("#cuadro").animate({
+                width: $(".cuadro").width(),
+                left: topeAncho
+            }, 2000);
+            $("#cuadro").animate({
+                height: alto - padTB
+            }, 2000);
+            $("#cuadro").animate({
+                height: $(".cuadro").height(),
+                top: topeAlto
+            }, 2000);
+            $("#cuadro").animate({
+                left: "0",
+                width: ancho - padLR
+            }, 2000);
+            $("#cuadro").animate({
+                width: $(".cuadro").width(),
+                left: "0"
+            }, 2000);
+            $("#cuadro").animate({
+                height: alto - padTB,
+                top: "0"
+            }, 2000);
+            $("#cuadro").animate({
+                height: $(".cuadro").height()
+            }, 2000);
+        }
+        var reproducirCuadro1 = function(padLR, padTB, topeAncho, topeAlto, ancho1, alto1) {
+            $("#cuadro1").animate({
+                width: ancho1 - padLR
+            }, 2000);
+            $("#cuadro1").animate({
+                width: $(".cuadro1").width(),
+                left: topeAncho
+            }, 2000);
+            $("#cuadro1").animate({
+                height: alto1 - padTB
+            }, 2000);
+            $("#cuadro1").animate({
+                height: $(".cuadro1").height(),
+                top: topeAlto
+            }, 2000);
+            $("#cuadro1").animate({
+                left: "180",
+                width: ancho1 - padLR
+            }, 2000);
+            $("#cuadro1").animate({
+                width: $(".cuadro1").width(),
+                left: "180"
+            }, 2000);
+            $("#cuadro1").animate({
+                height: alto1 - padTB,
+                top: "80"
+            }, 2000);
+            $("#cuadro1").animate({
+                height: $(".cuadro1").height()
+            }, 2000);
+        }
+        var reproducirSol = function() {
+
+            $("#sol").animate({
+                opacity: "0.5"
+            }, 1500).animate({
+                opacity: "1"
+            }, 1500);
+            timer = setTimeout('reproducirSol()', 10);
+        }
+
+        $(document).ready(function() {
+            var ancho1 = $(window).width() - $(".cuadro").width();
+            var alto1 = $(window).height() - $(".cuadro").height();
+            var padLR = parseInt($(".cuadro").css("padding-left")) + parseInt($(".cuadro").css("padding-right"));
+            var padTB = parseInt($(".cuadro").css("padding-top")) + parseInt($(".cuadro").css("padding-bottom"));
+            var padLR1 = parseInt($(".cuadro1").css("padding-left")) + parseInt($(".cuadro1").css("padding-right"));
+            var padTB1 = parseInt($(".cuadro1").css("padding-top")) + parseInt($(".cuadro1").css("padding-bottom"));
+
+            $("#fondo").click(function() {
+                var topeAncho = ancho - $(".cuadro").width() - padLR;
+                var topeAlto = alto - $(".cuadro").height() - padTB;
+                var topeAncho1 = ancho1 - padLR - padLR1 - 100;
+                var topeAlto1 = alto1 - padTB - padTB1;
+
+                $("#sol").animate({
+                    top: "20%"
+                }, 100);
+                reproducirNube1();
+                reproducirNube2();
+                reproducirSol();
+                reproducirCuadro(padLR, padTB, topeAncho, topeAlto);
+                reproducirCuadro1(padLR1, padTB1, topeAncho1, topeAlto1, ancho1, alto1);
+
+            });
+        });
+    </script>
+
+    <style>
+        #body {
+            margin: 5px;
+        }
+        
+        #fondo {
+            overflow: hidden;
+            background-color: gray;
+            height: 300px;
+            width: 500px;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -250px;
+            position: absolute;
+        }
+        
+        #sol {
+            background-color: yellow;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            top: -40%;
+            left: 80%;
+            margin: -50px 0 0 -50px;
+            position: absolute;
+            z-index: 2;
+        }
+        
+        #nube1 {
+            background-color: red;
+            height: 50px;
+            width: 80px;
+            top: 15%;
+            left: -20%;
+            margin: -25px 0 0 -40px;
+            position: absolute;
+            z-index: 1;
+        }
+        
+        #nube2 {
+            background-color: green;
+            height: 30px;
+            width: 50px;
+            top: 30%;
+            left: 120%;
+            margin: -15px 0 0 -25px;
+            position: absolute;
+            z-index: 3;
+        }
+        
+        .cuadro {
+            background-color: blue;
+            padding: 40px;
+            width: 100px;
+            position: absolute;
+        }
+        
+        #cuadro {
+            top: 0%;
+            left: 0%;
+        }
+        
+        .cuadro1 {
+            background-color: rgb(255, 0, 0);
+            padding: 40px;
+            width: 100px;
+            position: absolute;
+        }
+        
+        #cuadro1 {
+            top: 80px;
+            left: 180px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fondo">
+        <div id="sol">
+
+        </div>
+        <div id="nube1">
+
+        </div>
+        <div id="nube2">
+
+        </div>
+
+    </div>
+    <div id="cuadro" class="cuadro">
+
+    </div>
+    <div id="cuadro1" class="cuadro1">
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio css+jquery</title>
+    <script src="jQuery/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script>
+        var x;
+        var timer;
+        var reproducir = function() {
+            $("#cuadro1").css("display", "block");
+            $("#cuadro1").animate({
+                left: "100%"
+            }, 4000).animate({
+                left: "-18%"
+            }, 10);
+            reproducir();
+
+        };
+
+        function nube1() {
+
+        }
+
+        $(document).ready(function() {
+            $("#tv").click(function() {
+                $("#circulo1").css("display", "block");
+                $("#circulo1").animate({
+                    top: "5%"
+                }, 4000);
+                timer = setTimeout('reproducir()', 4000);
+
+            });
+        });
+    </script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #tv {
+            width: 500px;
+            height: 300px;
+            background-color: yellow;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -250px;
+            /* la mitad del alto, cero, cero, la mitad del ancho */
+            overflow: hidden;
+        }
+        
+        #circulo1 {
+            position: absolute;
+            top: -90px;
+            left: 50%;
+            border-radius: 50%;
+            margin: 0px 0 0 150px;
+            background-color: black;
+            width: 80px;
+            height: 80px;
+            display: none;
+            z-index: 5;
+        }
+        
+        #cuadro1 {
+            width: 80px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 10%;
+            left: -18%;
+            z-index: 2;
+        }
+        
+        #cuadro2 {
+            width: 50px;
+            height: 40px;
+            background-color: green;
+            display: none;
+        }
+        
+        #cuadro3 {
+            width: 30px;
+            height: 20px;
+            background-color: blue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tv">
+        <div id="circulo1"></div>
+        <div id="cuadro1"></div>
+        <div id="cuadro2"></div>
+        <div id="cuadro3"></div>
+    </div>
+
+</body>
+
+</html>
