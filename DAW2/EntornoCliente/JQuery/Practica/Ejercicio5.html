@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AJAX con JQuery - Fichero JSON</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(iniciar);
+
+        function iniciar() {
+
+            //Cargar fichero JSON del servidor
+            $("#boton").click(function() {
+                cargarJSON();
+            });
+        }
+
+        function cargarJSON() {
+            $.ajax({
+                url: "actividades.json",
+                data: {},
+                type: 'POST',
+                dataType: 'json',
+
+                success: function(response) {
+                    $('.fila').remove();
+                    response.forEach(element => {
+                        $('#tabla').append('<tr class="fila"><td>' + element.nombre + '</td><td>' + element.tipo.join() + '</td></tr>');
+                    });
+                },
+
+                error: function(xhr, status) {
+                    alert('Disculpe, existió un problema');
+                },
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id="boton" value="Cargar JSON"><br>
+    <table id="tabla" border="1">
+        <tr>
+            <th>ACTIVIDAD</th>
+            <th>TIPO</th>
+        </tr>
+    </table>
+</body>
+
+</html>

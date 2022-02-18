@@ -37,6 +37,13 @@ class StudyController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'code' => 'required|max:6',
+            'name' => 'required',
+            'abreviation' => 'required',
+        ];
+        $request->validate($rules);
+
         $study = Study::Create($request->all());
 
         return redirect('/studies');
@@ -82,6 +89,14 @@ class StudyController extends Controller
      */
     public function update(Request $request, Study $study)
     {
+
+        $rules = [
+            'code' => 'required|max:6',
+            'name' => 'required',
+            'abreviation' => 'required',
+        ];
+        $request->validate($rules);
+
         $study->fill($request->all());
 
         $study->save();
@@ -98,4 +113,12 @@ class StudyController extends Controller
     {
         //
     }
+
+    public function filter (Request $request) {
+        $filter = $request->filter;
+        $studies = Study::where('name', 'LIKE', "%$filter%")->get();
+        //return $studies; //devuelve JSON
+        //otra opción, devolver código html
+        return view('study.ajax.filter', ['studies'=>$studies]);
+        }
 }

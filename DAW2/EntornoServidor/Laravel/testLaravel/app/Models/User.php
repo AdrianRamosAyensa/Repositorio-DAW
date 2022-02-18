@@ -14,10 +14,15 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function role() { 
+    public function roles() { 
+        return $this->belongsToMany(Role::class);
 
-        return $this->belongsTo(Role::class);
+    }
 
+    public function addRole($role) {
+        
+        
+        $this->roles()->attach($role);
     }
 
     /**

@@ -9,12 +9,10 @@
         function lanzar() {
             if (window.XMLHttpRequest) {
                 peticion_http = new XMLHttpRequest();
-                alert("Su navegador es una mierda pero que al menos soporta Ajax");
             } else if (window.ActiveXObject) {
                 peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
-                alert("Su navegador es una mierda pero que al menos soporta Ajax");
             } else {
-                alert("Su navegador es una mierda que no soporta Ajax");
+                alert("Su navegador no soporta Ajax");
             }
 
             //Asignar la funcion de procesamiento

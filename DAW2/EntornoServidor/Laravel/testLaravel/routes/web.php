@@ -20,6 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('prueba', function(){
+    return "Has accedido correctamente a la ruta de prueba del middleware nuevo";
+}) -> middleware('role');
+
+Route::resource('studies', StudyController::class) -> middleware('auth');
+Route::get('/studies/filter', [StudyController::class, 'filter']);
 Route::resource('studies',StudyController::class);
 Auth::routes();
 

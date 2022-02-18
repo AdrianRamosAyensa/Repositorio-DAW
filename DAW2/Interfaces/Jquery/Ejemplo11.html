@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejemplo9</title>
+	<script src="software_empleado/jquery-3.4.1.min.js" type="text/javascript"></script>
+	<!-- <script src="https://code.jquery.com/jquery-1.8.3.js" type="text/javascript"></script> -->
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+
+			$(".respuesta").toggle();
+			
+			$('.pregunta').click( function () {
+				var id = this.id;
+				$("#respuesta"+id).toggle("slow");
+			});
+
+			$('#clear').click( function () {
+				$(".respuesta").hide();
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div>
+		Pregunta 1... (<a href="#" id="1" class="pregunta">enlace a la respuesta</a>)
+	</div>
+	<div id="respuesta1" class="respuesta"> Respuesta 1 </div><br>
+	
+	<div>
+		Pregunta 2... (<a href="#" id="2" class="pregunta">enlace a la respuesta</a>)
+	</div>
+	<div id="respuesta2" class="respuesta"> Respuesta 2</div><br>
+	
+	<div>
+		Pregunta 3... (<a href="#" id="3" class="pregunta">enlace a la respuesta</a>)
+	</div>
+	<div id="respuesta3" class="respuesta"> Respuesta 3</div><br>
+	
+	<br>
+	
+	<input id="clear" type="button" value="esconder">	
+	
+</body>
+</html>

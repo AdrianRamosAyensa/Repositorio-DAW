@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 4</title>
+    <meta charset="utf-8">
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        //Extraer informacion de un items.
+        $(document).ready(iniciar);
+
+        function iniciar() {
+            //Eliminar todos los items de la lista
+            $("#boton1").click(function() {
+                $("li").remove();
+            })
+
+            //Reiniciar la lista
+            $("#boton2").click(function() {
+                $("li").remove();
+                $("ul").append("<li>Primer item</li><li>Segundo item</li><li>Tercer item</li><li>Cuarto item</li>");
+            });
+
+            //Añadir un item como ultimo de la lista
+            $("#boton3").click(function() {
+                $("ul").append("<li>Nuevo item al final</li>")
+            })
+
+            //Añadir un item como primero de la lista
+            $("#boton4").click(function() {
+                $("ul").prepend("<li>Nuevo item al principio</li>");
+            });
+
+            //Quitar el ultimo item de la lista
+            $("#boton5").click(function() {
+                $("li").filter(":last").remove();
+            });
+
+            //Quitar el primer item de la lista
+            $("#boton6").click(function() {
+                $("li").filter(":first").remove();
+            });
+
+            //Pintar de distintos colores los items pares e impares
+            $("#boton7").click(function() {
+                $("ul li:odd").css("color", "green");
+                $("ul li:even").css("color", "red");
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>Primer item</li>
+        <li>Segundo item</li>
+        <li>Tercer item</li>
+        <li>Cuarto item</li>
+    </ul>
+    <p>
+        <input type="button" id="boton1" value="Eliminar la lista completa."><br>
+        <input type="button" id="boton2" value="Restaurar Lista"><br>
+        <input type="button" id="boton3" value="Añadir un item al final de la lista"><br>
+        <input type="button" id="boton4" value="Añadir un item al principio de la lista"><br>
+        <input type="button" id="boton5" value="Eliminar el último item."><br>
+        <input type="button" id="boton6" value="Eliminar el primer item."><br>
+        <input type="button" id="boton7" value="Decorar colores alternos"><br>
+    </p>
+    <script>
+    </script>
+</body>
+
+</html>

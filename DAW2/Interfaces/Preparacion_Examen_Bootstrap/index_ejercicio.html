@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Ejercicio Bootstrap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="generator" content="CSE HTML Validator (https://www.htmlvalidator.com/)">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        @media (max-width: 540) {
+            .menu1 ul li {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <br>
+        <div class="jumbotron text-center">
+            <h2>Ejercicio Bootstrap</h2>
+            <h2>Adrian Ramos Ayensa</h2>
+        </div>
+        <nav class="menu1 navbar navbar-default col-lg-2 col-md-2 col-sm-12 col-xs-12">
+            <ul class="nav flex-column">
+                <li><a href="#">menu 1</a></li>
+                <li><a href="#">menu 2</a></li>
+                <li>
+                    <a href="#" data-toggle="dropdown">menu 3<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">submenu 1</a></li>
+                        <li><a href="#">submenu 2</a></li>
+                        <li><a href="#">submenu 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">menu 4</a></li>
+            </ul>
+        </nav>
+
+        <div class="container col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <div class="panel panel-default col-lg-2 col-md-3 col-sm-6 col-xs-12 ">
+                <div class="panel-heading">Panel Heading</div>
+                <div class="panel-body">Panel Content</div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <ul class="nav navbar-nav">
+                        <li><a class="navbar-brand" href="#">INICIO</a></li>
+                        <li><a href="#">COCHES</a></li>
+                        <li>
+                            <a href="#" data-toggle="dropdown">MOTOS<b class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#">RACING</a></li>
+                                <li><a href="#">NAKED</a></li>
+                                <li><a href="#">TOURING</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">CAMIONES</a></li>
+
+                    </ul>
+                </div>
+            </div>
+    </div>
+    </nav>
+
+    </div>
+</body>
+
+</html>

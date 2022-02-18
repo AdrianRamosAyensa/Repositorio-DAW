@@ -13,7 +13,7 @@
         </h1>
 
 
-        <table class="table table-striped">
+        <table border="1" class="table table-striped">
         <tr>
             <th>Código</th>
             <th>Nombre</th>
@@ -34,13 +34,23 @@
         @endforelse
         </table>
 
-
-
-
+        <hr>
+        <h2>Busqueda Ajax</h2>
+        <form action="" id="formulario">
+            <input type="text" id="filtro">
+            <input type="submit" id="buscar">
+        </form>
+        <br>
+        <div id="destinofiltro">
+            destino filtro...
+        </div>
 
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/js/ejemploajax.js"></script>
 @endsection
 
 
