@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Ejercicio con php</title>
+    <script>
+        function showHint() {
+
+            // Se comprueba la compatibilidad de ajax en el navegador
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+            } else {
+                alert("Su navegador no soporta Ajax");
+            }
+
+            peticion_http.onreadystatechange = mostrarHint;
+
+            //Preparar la petición
+            querystring = "q=" + document.getElementById("txt1").value;
+
+            peticion_http.open("POST", "gethint.php", true); //asincrono
+
+            // header que indica que le estamos enviando un formulario codificado como url
+            peticion_http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+            //Enviar la petición
+            peticion_http.send(querystring);
+        }
+    </script>
+</head>
+
+<body>
+    <h2>The XMLHttpRequest Object</h2>
+    <h3>Start typing a name in the input field below:</h3>
+
+    <p>Suggestions: <span id="txtHint"></span></p>
+    <p>First name: <input type="text" id="txt1"></p>
+
+    <div id="resultado"></div>
+    <script>
+        document.getElementById("txt1").addEventListener("keyup", showHint, false);
+
+        function mostrarHint() {
+            var hint = null;
+
+            // Cuando la peticion ha terminado con exito se recoge el hint
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                hint = peticion_http.responseText;
+
+            }
+
+            if (hint != null) {
+                document.getElementById("txtHint").textContent = hint;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 1</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+    <script>
+        // Funcion que recoge la peticion de ajax y con el xml cargado forma la tabla
+        function crearTabla() {
+            var documentoXml = null;
+            // Cuando la peticion ha terminado con exito se recoge el xml
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+                documentoXml = peticion_http.responseXML;
+            }
+            // Si de la petición ha llegado el xml y se ha cargado en decumentoXml
+            if (documentoXml != null) {
+
+                // se guarda los elementos "CD" del xml
+                var cds = documentoXml.getElementsByTagName("CD");
+                var table = document.getElementById("demo");
+                // Se crea la fila de los headers de la tabla
+                var fila1 = document.createElement("tr");
+                var header1 = document.createElement("th");
+                header1.innerHTML = "Artista";
+                fila1.appendChild(header1);
+                var header2 = document.createElement("th");
+                header2.innerHTML = "Título";
+                fila1.appendChild(header2);
+
+                // se añade la fila de los headers a la tabla
+                table.appendChild(fila1);
+
+                // En este bucle se recorre el array de "CD" para buscar por la tag de los elementos el artista y titulo de cada cd y formar su fila correspondiente en la tabla
+                for (let index = 0; index < cds.length; index++) {
+                    var fila = document.createElement("tr");
+
+                    var celda1 = document.createElement("td");
+                    celda1.innerHTML = cds[index].getElementsByTagName("ARTIST")[0].textContent;
+                    fila.appendChild(celda1);
+
+                    var celda2 = document.createElement("td");
+                    celda2.innerHTML = cds[index].getElementsByTagName("TITLE")[0].textContent;
+                    fila.appendChild(celda2);
+
+                    table.appendChild(fila);
+                }
+
+                // se añade la tabla al body de la página
+                document.getElementsByTagName("body")[0].appendChild(table);
+            }
+        }
+
+        // funcion que comprueba la compatibilidad del navegador con ajax y manda la peticion para recoger el archivo cd_catalog.xml
+        function lanzar() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+            } else {
+                alert("Su navegador no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = crearTabla;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "cd_catalog.xml", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="texto">
+        <h1>Colección de Cds</h1>
+        <button id="cargaCatalogo">Carga catálogo</button>
+    </div>
+    <table id="demo"></table>
+
+    <script>
+        // Evento de click que lanza la funcion de la peticion get
+        document.getElementById("cargaCatalogo").addEventListener("click", lanzar, false);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ejercicio 2</title>
+
+    <script>
+        // funcion que lanza la peticion get para recoger el json 
+        function lanzar() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+            } else {
+                alert("Su navegador no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = crearTabla;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "actividades.json", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        }
+    </script>
+</head>
+
+<!-- Se lanza la peticion get al terminar de cargar el body de la pagina -->
+
+<body onload="lanzar()">
+
+    <script>
+        // Funcion que dado el json correspondiente genere la tabla deseada
+        function crearTabla() {
+
+            var documentoJson = null;
+
+            // cuando la peticion se termina y es correcta se recoge el json como texto en una variable
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoTxt = peticion_http.responseText;
+
+            }
+
+            if (documentoTxt != null) {
+
+                // se parsea el archivo json que hemos recogido antes como txt a json
+                var documentoJson = JSON.parse(documentoTxt);
+
+                // Se crea la tabla vacia
+                var table = document.createElement("table");
+                table.setAttribute("border", "1");
+
+                var fila1 = document.createElement("tr");
+
+                // Se crean los headers de la tabla
+                var header1 = document.createElement("th");
+                header1.innerHTML = "Nombre";
+                fila1.appendChild(header1);
+                var header2 = document.createElement("th");
+                header2.innerHTML = "Descripción";
+                fila1.appendChild(header2);
+                var header3 = document.createElement("th");
+                header3.innerHTML = "Tipo";
+                fila1.appendChild(header3);
+                var header4 = document.createElement("th");
+                header4.innerHTML = "Duración";
+                fila1.appendChild(header4);
+                var header5 = document.createElement("th");
+                header5.innerHTML = "Calorías";
+                fila1.appendChild(header5);
+                var header6 = document.createElement("th");
+                header6.innerHTML = "Beneficios";
+                fila1.appendChild(header6);
+                var header7 = document.createElement("th");
+                header7.innerHTML = "Tipo Ejercicio";
+                fila1.appendChild(header7);
+
+                table.appendChild(fila1);
+
+                // En cada iteracion del bucle se recogen los valores de la actividad para añadirlo a su celda
+                for (let index = 0; index < documentoJson.length; index++) {
+                    var fila = document.createElement("tr");
+
+                    var celda1 = document.createElement("td");
+                    celda1.innerHTML = documentoJson[index].nombre;
+                    fila.appendChild(celda1);
+
+                    var celda2 = document.createElement("td");
+                    celda2.innerHTML = documentoJson[index].descripcion;
+                    fila.appendChild(celda2);
+
+                    // Los valores que llegan como array pueden convertirse a string con join()
+                    var celda3 = document.createElement("td");
+                    celda3.innerHTML = documentoJson[index].tipo.join();
+                    fila.appendChild(celda3);
+
+                    var celda4 = document.createElement("td");
+                    celda4.innerHTML = documentoJson[index].duracion;
+                    fila.appendChild(celda4);
+
+                    var celda5 = document.createElement("td");
+                    celda5.innerHTML = documentoJson[index].calorias;
+                    fila.appendChild(celda5);
+
+                    var celda6 = document.createElement("td");
+                    celda6.innerHTML = documentoJson[index].beneficios.join();
+                    fila.appendChild(celda6);
+
+                    var celda7 = document.createElement("td");
+                    celda7.innerHTML = documentoJson[index].tipoEjercicio.join();
+                    fila.appendChild(celda7);
+
+                    table.appendChild(fila);
+                }
+                document.getElementsByTagName("body")[0].appendChild(table);
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
