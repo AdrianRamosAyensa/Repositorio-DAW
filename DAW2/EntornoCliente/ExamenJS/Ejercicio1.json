@@ -1,0 +1,25 @@
+[{
+        "nombre": "Sergio",
+        "equipo": "Augusteros",
+        "habilidades": ["Inteligente", "Torpe"],
+        "posicion": "Centrocampista"
+    },
+    {
+        "nombre": "Javier",
+        "equipo": "Augusteros",
+        "habilidades": ["Perseverante", "Sabio"],
+        "posicion": "Defensa"
+    },
+    {
+        "nombre": "Eduardo",
+        "equipo": "Dawistas",
+        "habilidades": ["Curioso", "Lento"],
+        "posicion": "Portero"
+    },
+    {
+        "nombre": "Pablo",
+        "equipo": "Dawistas",
+        "habilidades": ["Rapido", "Fuerte"],
+        "posicion": "Delantero"
+    }
+]

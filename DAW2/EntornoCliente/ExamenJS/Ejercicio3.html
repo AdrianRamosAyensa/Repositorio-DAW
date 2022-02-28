@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 3 - Libros JQUERY</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script type="text/javascript">
+        // Cuando el documento ha terminado de cargarse se inicia la funcion "iniciar"
+        $(document).ready(iniciar);
+
+        // Función que prepara la peticion ajax por POST y que si es correcta forma la lista de libros
+        function iniciar() {
+            $.ajax({
+                url: "Ejercicio3.xml",
+                data: {},
+                type: 'POST',
+                dataType: 'xml',
+
+                success: function(response) {
+
+                    // Se selecciona la lista con JQuery
+                    var lista = $('ul');
+
+                    // Se seleccionan los libros del XML cargado en la petición
+                    var libros = response.getElementsByTagName("libro");
+
+                    // Bucle para añadir un elemento de lista por cada libro
+                    for (var element of libros) {
+
+                        // Se crea un elemento de lista mediante JQuery y se guarda en un objeto JQuery
+                        var $li = $("<li>");
+
+                        // Al objeto JQuery de la lista se le asigna el código HTML con el título y autor del libro
+                        $li.html("Título: " + element.childNodes[1].textContent + " | Autor: " + element.childNodes[1].textContent);
+
+                        // Se añade el elemento de la lista a la propia lista
+                        lista.append($li);
+                    }
+
+                    // Se pintan de verde y rojo los elementos alternos de la lista
+                    $("ul li:odd").css("color", "green");
+                    $("ul li:even").css("color", "red");
+
+                },
+
+                error: function(xhr, status) {
+                    alert('Disculpe, existió un problema');
+                },
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Ejercicio de JQuery, petición POST y XML</h2>
+    <ul>
+
+    </ul>
+
+</body>
+
+</html>

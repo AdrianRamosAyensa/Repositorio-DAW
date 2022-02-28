@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <metacharset="UTF-8">
+        <title>Ejercicio 4 - Cookies y Local Storage</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="bootstrap.min.js"></script>
+        <script type="text/javascript">
+            document.cookie = "saludo=hola; expires=Mon, 15 Jan 2024 12:00:00 UTC";
+            document.cookie = "despedida=adios; expires=Mon, 15 Jan 2024 12:00:00 UTC";
+
+            localStorage.setItem("NIF", "123456789A");
+        </script>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        var parrafo = document.getElementsByTagName("p")[0];
+
+        parrafo.textContent = document.cookie + " | ";
+
+        document.cookie = "despedida=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+        parrafo.textContent += document.cookie + " | ";
+
+        //parrafo.textContent += localStorage.getItem("NIF");
+    </script>
+</body>
+
+</html>

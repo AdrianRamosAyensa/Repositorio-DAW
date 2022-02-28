@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 2 - jugadores</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script>
+        // funcion que lanza la peticion get para recoger el json 
+
+        var iniciarAjax = function() {
+
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+            } else {
+                alert("Su navegador no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = rellenarTabla;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "Ejercicio1.json", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn1">Graba actividades en la tabla</button>
+    <!-- Lista de selección-filtrado -->
+    <select id="opciones" name="opciones">
+        <option value="1">Sergio</option>
+        <option value="2">Javier</option>
+        <option value="3">Eduardo</option>
+        <option value="4">Pablo</option>
+    </select>
+
+    <table id="tabla" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Equipo</th>
+            <th>Habilidades</th>
+            <th>Posición</th>
+        </tr>
+    </table>
+    <script>
+        // se selecciona el desplegable para elegir el jugador
+        var select = document.getElementById("opciones");
+
+        // Evento que lanza el rellenado de la tabla con los datos del jugador NO SE RELLENA LA TABLA HASTA CAMBIAR EL JUGADOR SELECCIONADO
+        select.addEventListener("change", iniciarAjax);
+
+        // Función encargada de rellenar la tabla con los valores del json
+        function rellenarTabla() {
+
+            var documentoTxt = null;
+
+            // cuando la peticion se termina y es correcta se recoge el json como texto en una variable
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoTxt = peticion_http.responseText;
+
+            }
+
+            if (documentoTxt != null) {
+
+                // Se parsea el archivo json que hemos recogido antes como txt a json
+                var documentoJson = JSON.parse(documentoTxt);
+
+                // Se recoge la tabla a rellenar
+                var table = document.getElementById("tabla");
+
+                // Se deja la tabla solo con los headers
+                table.innerHTML = "<tr><th>Nombre</th><th>Equipo</th><th>Habilidades</th><th>Posición</th></tr>";
+
+                // Se recoge el valor seleccionado del select restándole 1 para poder usarlo como índice de un array
+                var valorSelect = document.getElementById("opciones").value - 1;
+
+                if (valorSelect >= 0) {
+                    // Se recogen los valores del jugador seleccionado para añadirlo a su fila
+                    var fila = document.createElement("tr");
+
+                    var celda1 = document.createElement("td");
+                    celda1.innerHTML = documentoJson[valorSelect].nombre;
+                    fila.appendChild(celda1);
+
+                    var celda2 = document.createElement("td");
+                    celda2.innerHTML = documentoJson[valorSelect].equipo;
+                    fila.appendChild(celda2);
+
+                    // Los valores que llegan como array pueden convertirse a string con join()
+                    var celda3 = document.createElement("td");
+                    celda3.innerHTML = documentoJson[valorSelect].habilidades.join();
+                    fila.appendChild(celda3);
+
+                    var celda4 = document.createElement("td");
+                    celda4.innerHTML = documentoJson[valorSelect].posicion;
+                    fila.appendChild(celda4);
+
+                    table.appendChild(fila);
+                }
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

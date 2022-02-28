@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 1 - jugadores</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script>
+        // funcion que lanza la peticion get para recoger el json 
+
+        var iniciarAjax = function() {
+
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion_http = new XMLHttpRequest("Microsoft.XMLHTTP");
+            } else {
+                alert("Su navegador no soporta Ajax");
+            }
+
+            //Asignar la funcion de procesamiento
+            peticion_http.onreadystatechange = rellenarTabla;
+
+            //Preparar la peticion
+            peticion_http.open("GET", "Ejercicio1.json", true); //asincrono
+
+            //Enviar la peticion
+            peticion_http.send(null);
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn1">Graba actividades en la tabla</button>
+    <table id="tabla" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Equipo</th>
+            <th>Habilidades</th>
+            <th>Posición</th>
+        </tr>
+    </table>
+    <script>
+        var boton = document.getElementById("btn1");
+
+        boton.addEventListener("click", iniciarAjax);
+
+        // Función encargada de rellenar la tabla con los valores del json
+        function rellenarTabla() {
+
+            var documentoTxt = null;
+
+            // cuando la peticion se termina y es correcta se recoge el json como texto en una variable
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+
+                documentoTxt = peticion_http.responseText;
+
+            }
+
+            if (documentoTxt != null) {
+
+                // Se parsea el archivo json que hemos recogido antes como txt a json
+                var documentoJson = JSON.parse(documentoTxt);
+
+                var table = document.getElementById("tabla");
+
+                // En cada iteracion del bucle se recogen los valores de los jugadores para añadirlo a su celda
+                for (let index = 0; index < documentoJson.length; index++) {
+                    var fila = document.createElement("tr");
+
+                    var celda1 = document.createElement("td");
+                    celda1.innerHTML = documentoJson[index].nombre;
+                    fila.appendChild(celda1);
+
+                    var celda2 = document.createElement("td");
+                    celda2.innerHTML = documentoJson[index].equipo;
+                    fila.appendChild(celda2);
+
+                    // Los valores que llegan como array pueden convertirse a string con join()
+                    var celda3 = document.createElement("td");
+                    celda3.innerHTML = documentoJson[index].habilidades.join();
+                    fila.appendChild(celda3);
+
+                    var celda4 = document.createElement("td");
+                    celda4.innerHTML = documentoJson[index].posicion;
+                    fila.appendChild(celda4);
+
+                    table.appendChild(fila);
+                }
+                document.getElementsByTagName("body")[0].appendChild(table);
+
+            }
+        }
+    </script>
+</body>
+
+</html>

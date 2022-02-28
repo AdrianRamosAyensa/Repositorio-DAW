@@ -19,9 +19,20 @@
             color: black;
         }
         
-        @media (max-width: 540) {
-            .menu1 ul li {
-                display: inline;
+        .panel-body {
+            height: 300px;
+        }
+        /* .minAltura {
+            min-height: 250px;
+        } */
+        
+        .ultimo {
+            margin-bottom: 200px;
+        }
+        
+        @media (max-width: 769px) {
+            .panel-body {
+                height: auto;
             }
         }
     </style>
@@ -35,11 +46,11 @@
             <h2>Ejercicio Bootstrap</h2>
             <h2>Adrian Ramos Ayensa</h2>
         </div>
-        <nav class="menu1 navbar navbar-default col-lg-2 col-md-2 col-sm-12 col-xs-12">
-            <ul class="nav flex-column">
-                <li><a href="#">menu 1</a></li>
-                <li><a href="#">menu 2</a></li>
-                <li>
+        <nav class="menu1 navbar navbar-default col-lg-2 col-md-3 col-sm-12 col-xs-12">
+            <ul class="nav flex-column navbar-header">
+                <li class="col-lg-12 col-md-12 col-sm-3 col-xs-12"><a href="#">menu 1</a></li>
+                <li class="col-lg-12 col-md-12 col-sm-3 col-xs-12"><a href="#">menu 2</a></li>
+                <li class="col-lg-12 col-md-12 col-sm-3 col-xs-12">
                     <a href="#" data-toggle="dropdown">menu 3<b class="caret"></b></a>
 
                     <ul class="dropdown-menu">
@@ -48,41 +59,72 @@
                         <li><a href="#">submenu 3</a></li>
                     </ul>
                 </li>
-                <li><a href="#">menu 4</a></li>
+                <li class="col-lg-12 col-md-12 col-sm-3 col-xs-12"><a href="#">menu 4</a></li>
             </ul>
         </nav>
 
-        <div class="container col-lg-10 col-md-10 col-sm-10 col-xs-12">
-            <div class="panel panel-default col-lg-2 col-md-3 col-sm-6 col-xs-12 ">
-                <div class="panel-heading">Panel Heading</div>
-                <div class="panel-body">Panel Content</div>
+        <div class="container col-lg-10 col-md-9 col-sm-12 col-xs-12">
+            <article class=" col-lg-3 col-md-4 col-sm-5 col-xs-12  minAltura">
+                <div class="panel panel-default">
+                    <div class="panel-heading">FOTO 1</div>
+                    <div class="panel-body"><img src="img/foto1.jpg" class="img-responsive"></div>
+                </div>
+            </article>
+            <article class=" col-lg-3 col-md-4 col-sm-5 col-xs-12  minAltura">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">FOTO 2</div>
+                    <div class="panel-body"><img src="img/foto2.jpg" class="img-responsive"></div>
+                </div>
+            </article>
+            <article class=" col-lg-3 col-md-4 col-sm-5 col-xs-12  minAltura">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">FOTO 3</div>
+                    <div class="panel-body"><img src="img/foto3.jpg" class="img-responsive"></div>
+                </div>
+            </article>
+            <article class=" col-lg-3 col-md-4 col-sm-5 col-xs-12  minAltura">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">FOTO 4</div>
+                    <div class="panel-body"><img src="img/foto4.jpg" class="img-responsive"></div>
+                </div>
+            </article>
+            <article class=" col-lg-3 col-md-4 col-sm-5 col-xs-12  minAltura">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">FOTO 5</div>
+                    <div class="panel-body"><img src="img/foto5.jpg" class="img-responsive"></div>
+                </div>
+            </article>
+            <article class="ultimo col-lg-3 col-md-4 col-sm-5 col-xs-12  minAltura">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">FOTO 6</div>
+                    <div class="panel-body"><img src="img/foto6.jpg" class="img-responsive"></div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">INICIO</a></li>
+                    <li><a href="#">COCHES</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">MOTOS<b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="#">RACING</a></li>
+                            <li><a href="#">NAKED</a></li>
+                            <li><a href="#">TOURING</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">CAMIONES</a></li>
+
+                </ul>
             </div>
         </div>
-
-        <nav class="navbar navbar-inverse navbar-fixed-bottom">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <ul class="nav navbar-nav">
-                        <li><a class="navbar-brand" href="#">INICIO</a></li>
-                        <li><a href="#">COCHES</a></li>
-                        <li>
-                            <a href="#" data-toggle="dropdown">MOTOS<b class="caret"></b></a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="#">RACING</a></li>
-                                <li><a href="#">NAKED</a></li>
-                                <li><a href="#">TOURING</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">CAMIONES</a></li>
-
-                    </ul>
-                </div>
-            </div>
-    </div>
+        </div>
     </nav>
 
-    </div>
 </body>
 
 </html>
